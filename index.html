@@ -379,6 +379,35 @@
       color: var(--rule);
     }
 
+
+    /* ── TAB PAGES ── */
+    .tab-page {
+      padding-top: 80px;
+      min-height: 100vh;
+      background: var(--bg);
+    }
+    .tab-page .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 1.5rem 3rem 0;
+      cursor: pointer;
+      background: none;
+      border: none;
+      transition: color 0.2s;
+    }
+    .tab-page .back-btn:hover { color: var(--accent); }
+    .nav-links a.active {
+      color: var(--accent);
+      border-bottom: 1px solid var(--accent);
+    }
+
     /* ── ANIMATIONS ── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(24px); }
@@ -406,12 +435,14 @@
   <div class="nav-logo">LiBERA 2026</div>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
-    <li><a href="#schedule">Schedule</a></li>
+    <li><a href="#" onclick="showPage('schedule'); return false;">Schedule</a></li>
     <li><a href="#speakers">Speakers</a></li>
-    <li><a href="#registration">Register</a></li>
+    <li><a href="#" onclick="showPage('registration'); return false;">Register</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
+
+<div id="main-content">
 
 <!-- HERO -->
 <section class="hero" id="home">
@@ -437,7 +468,7 @@
         <span class="hero-meta-value">In-person</span>
       </div>
     </div>
-    <a href="#registration" class="hero-cta">Register Now →</a>
+    <a href="#" onclick="showPage('registration'); return false;" class="hero-cta">Register Now →</a>
   </div>
 </section>
 
@@ -470,6 +501,8 @@
 </section>
 
 <!-- SCHEDULE -->
+<div id="page-schedule" class="tab-page" style="display:none;">
+  <button class="back-btn" onclick="showPage('home')">← Back to main</button>
 <section id="schedule">
   <div class="section-inner">
     <p class="section-label">Programme</p>
@@ -557,6 +590,7 @@
     </div>
   </div>
 </section>
+</div><!-- end page-schedule -->
 
 <!-- SPEAKERS -->
 <section id="speakers">
@@ -654,6 +688,8 @@
 </section>
 
 <!-- REGISTRATION -->
+<div id="page-registration" class="tab-page" style="display:none;">
+  <button class="back-btn" onclick="showPage('home')">← Back to main</button>
 <section id="registration">
   <div class="section-inner">
     <p class="section-label">Registration</p>
@@ -694,6 +730,7 @@
     </div>
   </div>
 </section>
+</div><!-- end page-registration -->
 
 <!-- CONTACT -->
 <section id="contact">
@@ -733,6 +770,8 @@
   </div>
 </section>
 
+</div><!-- end main-content -->
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-name">ISDCO 2026 · The LiBERA Bogotá Midterm Meeting</div>
@@ -740,6 +779,29 @@
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+
+  function showPage(page) {
+    // Hide all tab pages
+    document.querySelectorAll('.tab-page').forEach(el => el.style.display = 'none');
+    // Remove active from nav
+    document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+
+    if (page === 'home') {
+      document.getElementById('main-content').style.display = 'block';
+      window.scrollTo(0, 0);
+    } else {
+      document.getElementById('main-content').style.display = 'none';
+      const el = document.getElementById('page-' + page);
+      if (el) { el.style.display = 'block'; window.scrollTo(0, 0); }
+      // Highlight active nav link
+      document.querySelectorAll('.nav-links a').forEach(a => {
+        if (a.getAttribute('onclick') && a.getAttribute('onclick').includes(page)) {
+          a.classList.add('active');
+        }
+      });
+    }
+  }
+
   function handleSubmit(e) {
     e.preventDefault();
     const msg = document.getElementById('form-msg');
