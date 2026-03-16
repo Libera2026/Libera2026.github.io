@@ -36,9 +36,7 @@
       display: flex; justify-content: space-between; align-items: center;
       padding: 0.75rem 3rem;
     }
-    .nav-logo" onclick="showPage('home')" style="cursor:pointer;">LiBERA 2026</div>
-<button id="navToggle" class="nav-toggle" aria-expanded="false" aria-controls="primaryNav">☰ Menu</button>
-<div class="nav-logo {
+    .nav-logo {
       font-family: 'DM Mono', monospace;
       font-size: 0.78rem;
       letter-spacing: 0.12em;
@@ -431,28 +429,14 @@
       footer { padding: 2rem 1.5rem; }
       .reg-box { padding: 2rem 1.5rem; }
     }
-  
-/* Skip link */
-.skip-link{position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden}
-.skip-link:focus{left:1rem;top:1rem;width:auto;height:auto;padding:0.5rem 1rem;background:#fff;z-index:1000}
-
-/* Mobile nav toggle */
-.nav-toggle{display:none;border:0;background:none;font-size:1rem;cursor:pointer}
-@media (max-width:700px){
-  .nav-toggle{display:inline-block}
-  .nav-links{display:none;position:absolute;top:100%;right:1.5rem;background:#fff;padding:1rem;border-radius:6px;flex-direction:column;gap:.75rem}
-  .nav-links.open{display:flex}
-}
-
-</style>
+  </style>
 </head>
 <body>
-<a href="#main-content" class="skip-link">Skip to content</a>
 
 <!-- NAV -->
 <nav>
   <div class="nav-logo" onclick="showPage('home')" style="cursor:pointer;">LiBERA 2026</div>
-  <ul id="primaryNav" class="nav-links">
+  <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#speakers">Speakers</a></li>
     <li><a href="#" onclick="showPage('schedule'); return false;">Schedule</a></li>
