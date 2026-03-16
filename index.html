@@ -448,7 +448,7 @@
     .venue-margin-layout { display: flex; flex-direction: column; }
     .venue-row {
       display: grid;
-      grid-template-columns: 160px 1fr;
+      grid-template-columns: 120px 1fr;
       gap: 2rem;
       padding: 1.4rem 0;
       border-bottom: 1px solid var(--rule);
@@ -505,12 +505,10 @@
 <nav>
   <div class="nav-logo" onclick="showPage('home')" style="cursor:pointer;">LiBERA 2026</div>
   <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#speakers">Speakers</a></li>
+    <li><a href="#" onclick="showPage('home'); return false;">About</a></li>
     <li><a href="#" onclick="showPage('schedule'); return false;">Schedule</a></li>
     <li><a href="#" onclick="showPage('registration'); return false;">Register</a></li>
     <li><a href="#" onclick="showPage('bogota'); return false;">Venue</a></li>
-    <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
 
@@ -832,7 +830,7 @@
         </div>
         <div class="venue-row">
           <div class="venue-label">Getting Around</div>
-          <div class="venue-text">The city has an extensive bus rapid transit system (TransMilenio) and a growing metro line. Taxis and ride-hailing apps (InDriver, Uber) are widely available and affordable.</div>
+          <div class="venue-text">The city has an extensive bus rapid transit system (TransMilenio). Taxis and ride-hailing apps (Uber and Didi) are widely available and affordable.</div>
         </div>
         <div class="venue-row">
           <div class="venue-label">Things to Do</div>
@@ -845,7 +843,7 @@
   <section>
     <div class="section-inner">
       <h2 class="section-title">Accommodation</h2>
-      <p class="section-body">A range of hotels is available near the workshop venue. We recommend staying in one of the following three areas: a) Downtown, b) Chapinero, or c) North.</p>
+      <p class="section-body">A range of hotels is available near the workshop venue. We recommend staying in one of the following three areas.</p>
 
       <div class="venue-margin-layout" style="margin-top:2.5rem;">
 
