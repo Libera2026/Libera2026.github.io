@@ -66,10 +66,15 @@
 
     .hero-bg {
       position: absolute; inset: 0; z-index: 0;
-      background:
+      background-image:
         radial-gradient(ellipse 80% 60% at 70% 30%, rgba(196,150,58,0.08) 0%, transparent 70%),
         radial-gradient(ellipse 50% 80% at 10% 80%, rgba(139,58,42,0.06) 0%, transparent 60%),
-        var(--bg);
+        linear-gradient(rgba(245,242,235,0.82), rgba(245,242,235,0.82)),
+        url('Libera_logo.png');
+      background-color: var(--bg);
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
     }
 
     /* Decorative grid lines */
@@ -687,11 +692,11 @@
       <div>
         <div class="contact-item">
           <div class="c-label">General Enquiries</div>
-          <div class="c-value"><a href="mailto:workshop@yourinstitution.edu">workshop@yourinstitution.edu</a></div>
+          <div class="c-value"><a href="/cdn-cgi/l/email-protection#2d5a425f465e45425d6d5442585f44435e594459585944424303484958"><span class="__cf_email__" data-cfemail="52253d2039213a3d22122b3d27203b3c21263b2627263b3d3c7c373627">[email&#160;protected]</span></a></div>
         </div>
         <div class="contact-item">
           <div class="c-label">Scientific Committee</div>
-          <div class="c-value"><a href="mailto:science@yourinstitution.edu">science@yourinstitution.edu</a></div>
+          <div class="c-value"><a href="/cdn-cgi/l/email-protection#8efdede7ebe0edebcef7e1fbfce7e0fdfae7fafbfae7e1e0a0ebeafb"><span class="__cf_email__" data-cfemail="c6b5a5afa3a8a5a386bfa9b3b4afa8b5b2afb2b3b2afa9a8e8a3a2b3">[email&#160;protected]</span></a></div>
         </div>
         <div class="contact-item">
           <div class="c-label">LiBERA Network</div>
@@ -722,7 +727,7 @@
   <div class="footer-copy">© 2026 Organising Committee</div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   function handleSubmit(e) {
     e.preventDefault();
     const msg = document.getElementById('form-msg');
@@ -735,19 +740,4 @@
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
-        e.target.style.opacity = '1';
-        e.target.style.transform = 'translateY(0)';
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.about-card, .speaker-card, .schedule-row').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(20px)';
-    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-    observer.observe(el);
-  });
-</script>
-
-</body>
-</html>
+        e.
