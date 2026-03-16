@@ -36,7 +36,9 @@
       display: flex; justify-content: space-between; align-items: center;
       padding: 0.75rem 3rem;
     }
-    .nav-logo {
+    .nav-logo" onclick="showPage('home')" style="cursor:pointer;">LiBERA 2026</div>
+<button id="navToggle" class="nav-toggle" aria-expanded="false" aria-controls="primaryNav">☰ Menu</button>
+<div class="nav-logo {
       font-family: 'DM Mono', monospace;
       font-size: 0.78rem;
       letter-spacing: 0.12em;
@@ -181,7 +183,7 @@
 
     .section-body {
       color: var(--muted);
-      max-width: 850px;
+      max-width: 680px;
       font-size: 1.05rem;
     }
 
@@ -429,14 +431,28 @@
       footer { padding: 2rem 1.5rem; }
       .reg-box { padding: 2rem 1.5rem; }
     }
-  </style>
+  
+/* Skip link */
+.skip-link{position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden}
+.skip-link:focus{left:1rem;top:1rem;width:auto;height:auto;padding:0.5rem 1rem;background:#fff;z-index:1000}
+
+/* Mobile nav toggle */
+.nav-toggle{display:none;border:0;background:none;font-size:1rem;cursor:pointer}
+@media (max-width:700px){
+  .nav-toggle{display:inline-block}
+  .nav-links{display:none;position:absolute;top:100%;right:1.5rem;background:#fff;padding:1rem;border-radius:6px;flex-direction:column;gap:.75rem}
+  .nav-links.open{display:flex}
+}
+
+</style>
 </head>
 <body>
+<a href="#main-content" class="skip-link">Skip to content</a>
 
 <!-- NAV -->
 <nav>
   <div class="nav-logo" onclick="showPage('home')" style="cursor:pointer;">LiBERA 2026</div>
-  <ul class="nav-links">
+  <ul id="primaryNav" class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#speakers">Speakers</a></li>
     <li><a href="#" onclick="showPage('schedule'); return false;">Schedule</a></li>
@@ -743,11 +759,9 @@
   <button class="back-btn" onclick="showPage('home')">← Back to main</button>
   <section>
     <div class="section-inner">
+      <p class="section-body" style="margin-bottom:2rem;">The workshop will be held at a leading Colombian university in Bogotá, a vibrant academic hub at 2,600 m altitude in the heart of South America. Venue details to be announced.</p>
       <p class="section-label">Venue</p>
-      <p class="section-body" style="margin-bottom:2rem;">The workshop will be held at Universidad de los Andes, a leading Colombian university in Bogotá, a vibrant academic hub at 2,600 m altitude in the heart of South America. </p>
-<p class="section-body" style="margin-bottom:2rem;"> All talks will take place in Room ABC XYZ. </p>
-      
-      <p class="section-label">About Bogotá</p>
+      <h2 class="section-title">Venue</h2>
       <p class="section-body">
         Bogotá is the vibrant capital of Colombia, situated on a high-altitude savanna at 2,600 metres above sea level in the heart of the Andes. A city of over eight million people, it blends colonial history with a thriving contemporary culture, world-class gastronomy, and a dynamic academic scene.
       </p>
