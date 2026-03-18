@@ -444,6 +444,35 @@
       .hotel-table tr { border-bottom: 1px solid var(--rule); padding: 0.6rem 0; display: block; }
     }
 
+    /* ── REGISTRATION FEE TABLE ── */
+    .reg-fee-table {
+      border-collapse: collapse;
+      font-size: 1rem;
+      max-width: 380px;
+    }
+    .reg-fee-table th {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-align: left;
+      padding: 0.45rem 2rem 0.45rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .reg-fee-table td {
+      padding: 0.65rem 2rem 0.65rem 0;
+      border-bottom: 1px solid var(--rule);
+      color: var(--ink);
+    }
+    .reg-fee-table tr:last-child td { border-bottom: none; }
+    .reg-fee-table td:last-child {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.85rem;
+      letter-spacing: 0.06em;
+      color: var(--accent);
+    }
+
     /* ── VENUE MARGIN LAYOUT ── */
     .venue-margin-layout { display: flex; flex-direction: column; }
     .venue-row {
@@ -507,7 +536,7 @@
   <ul class="nav-links">
     <li><a href="#" onclick="showPage('home'); return false;">About</a></li>
     <li><a href="#" onclick="showPage('schedule'); return false;">Schedule</a></li>
-    <li><a href="#" onclick="showPage('registration'); return false;">Register</a></li>
+    <li><a href="#" onclick="openCaptcha(); return false;">Register</a></li>
     <li><a href="#" onclick="showPage('bogota'); return false;">Venue</a></li>
   </ul>
 </nav>
@@ -733,6 +762,10 @@
   </div>
 </section>
 
+<div style="width:100%; line-height:0;">
+  <img src="uniandes-campus2.png" alt="Universidad de los Andes campus" style="width:100%; display:block; object-fit:cover;"/>
+</div>
+
 </div><!-- end main-content -->
 
 <div id="page-schedule" class="tab-page" style="display:none;">
@@ -799,12 +832,103 @@
   <div class="section-inner">
     <p class="section-label">Registration</p>
     <h2 class="section-title">Join the Workshop</h2>
-    <p class="section-body">Registration is COP <span style="color:var(--accent);">[amount TBA]</span>. Please follow the instructions in the link below to secure your place. We encourage early registration.</p>
-    <p style="margin-top:2rem;">
+    <p class="section-body" style="margin-bottom:1.8rem;">Besides the information presented here, all communications related to the event will come directly from one of the organizers. <strong>If you receive an email from an external party regarding accommodation or registration, you should assume it is a scam.</strong></p>
+    <p class="section-body">Please follow the instructions in the link below to secure your place. We encourage early registration.</p>
+
+    <table class="reg-fee-table" style="margin-top:2rem; margin-bottom:0.5rem;">
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Fee</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Student</td>
+          <td>COP 50.000</td>
+        </tr>
+        <tr>
+          <td>Non-student</td>
+          <td>COP 200.000</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="section-body" style="font-size:0.95rem; margin-top:0.9rem; margin-bottom:2rem;">
+      Registration will be open from <strong>May 1</strong> to <strong>July 1</strong>.
+    </p>
+
+    <p style="margin-top:0;">
       <a href="#" style="font-family:'DM Mono',monospace; font-size:0.75rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--card); background:var(--accent); padding:0.85rem 2.2rem; text-decoration:none;">Registration Link →</a>
     </p>
   </div>
 </section>
+
+<section style="border-top:1px solid var(--rule);">
+  <div class="section-inner">
+    <p class="section-label">Present your work</p>
+    <h2 class="section-title">Contributive Talks and Posters</h2>
+    <p class="section-body">There will be limited spots available for contributive talks, alongside a dedicated poster session open to all participants.</p>
+
+    <div class="venue-margin-layout" style="margin-top:2.5rem;">
+
+      <div class="venue-row">
+        <div class="venue-label">Talks</div>
+        <div class="venue-text">A limited number of slots are available for contributed talks. Submissions will be reviewed and selected by the organizing committee.</div>
+      </div>
+
+      <div class="venue-row">
+        <div class="venue-label">Posters</div>
+        <div class="venue-text">Students at any level — Undergraduate, Master's, or Doctoral — are encouraged to apply for the poster session. The poster session will be run as a contest, with prizes awarded to the top participants.</div>
+      </div>
+
+      <div class="venue-row">
+        <div class="venue-label">How to Submit</div>
+        <div class="venue-text">
+          <p style="margin-bottom:0.7rem;">Your submission should consist of a <strong>title</strong> and a <strong>short abstract</strong>, and must be sent by email before the deadline to:</p>
+          <p style="font-family:'DM Mono',monospace; font-size:0.8rem; letter-spacing:0.06em; color:var(--accent); margin-bottom:0.7rem;">mj[dot]junca20[at]uniandes[dot]edu[dot]co</p>
+        </div>
+      </div>
+
+      <div class="venue-row">
+        <div class="venue-label">Key Dates</div>
+        <div class="venue-text">
+          <p style="margin-bottom:0.4rem;"><strong>Submission deadline:</strong> June 1st</p>
+          <p><strong>Decisions announced:</strong> by June 15th at the latest</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section style="border-top:1px solid var(--rule);">
+  <div class="section-inner">
+    <p class="section-label">Student Support</p>
+    <h2 class="section-title">Travel Grants</h2>
+    <p class="section-body">A limited number of travel grants will be available to students who can demonstrate a strong interest in, relevance to, and academic support for participating in the workshop.</p>
+    <p class="section-body" style="margin-top:1.2rem;">Please note that submitting a contributed talk or poster does <strong>not</strong> automatically enroll you for a travel grant — a separate application is required.</p>
+
+    <div class="venue-margin-layout" style="margin-top:2.5rem;">
+
+      <div class="venue-row">
+        <div class="venue-label">How to Apply</div>
+        <div class="venue-text">
+          <p style="margin-bottom:0.7rem;">Send an email to:</p>
+          <p style="font-family:'DM Mono',monospace; font-size:0.8rem; letter-spacing:0.06em; color:var(--accent); margin-bottom:0.7rem;">mj[dot]junca20[at]uniandes[dot]edu[dot]co</p>
+          <p>Your application must include: (1) a <strong>short statement of purpose</strong> (approximately half a page) explaining your motivation and the relevance of the workshop to your work, and (2) a <strong>letter of nomination from a faculty member</strong>.</p>
+        </div>
+      </div>
+
+      <div class="venue-row">
+        <div class="venue-label">Deadline</div>
+        <div class="venue-text">Applications will be considered on a rolling basis. The deadline is <strong>June 15th</strong>. Early applications are strongly encouraged.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 </div><!-- end page-registration -->
 
 
@@ -815,6 +939,9 @@
     <div class="section-inner">
       <h2 class="section-title">Venue</h2>
       <p class="section-body" style="margin-bottom:2rem;">The workshop will be held at Universidad de los Andes, a leading Colombian university in Bogotá, a vibrant academic hub at 2,600 m altitude in the heart of South America. Venue details to be announced.</p>
+      <div style="width:100%; line-height:0; margin-bottom:2.5rem;">
+        <img src="uniandes-campus.png" alt="Universidad de los Andes campus" style="width:100%; display:block; object-fit:cover;"/>
+      </div>
       <h2 class="section-title">About Bogotá</h2>
       <p class="section-body">
         Bogotá is a city of over eight million people, it blends colonial history with a thriving contemporary culture, world-class gastronomy, and a dynamic academic scene.
@@ -848,6 +975,7 @@
     <div class="section-inner">
       <h2 class="section-title">Accommodation</h2>
       <p class="section-body">A range of hotels is available near the workshop venue. We recommend staying in one of the following three areas.</p>
+      <p class="section-body" style="margin-top:1.2rem;">No third party company will be handling accommodation related to this event. Besides the information presented here, all communications related to the event will come directly from one of the organizers. <strong>If you receive an email from an external party regarding accommodation or registration, you should assume it is a scam.</strong></p>
 
       <div class="venue-margin-layout" style="margin-top:2.5rem;">
 
@@ -872,7 +1000,7 @@
                   <td>Cra. 4 # 16-03</td>
                   <td>(+57) 601 744 7790</td>
                   <td>María Claudia Gonzalez</td>
-                  <td><a href="mailto:mariaclaudia.gonzalez@bhhoteles.com">mariaclaudia.gonzalez@bhhoteles.com</a></td>
+                  <td><a href="/cdn-cgi/l/email-protection#fa979b88939b99969b8f9e939bd49d9594809b969f80ba989292958e9f969f89d4999597"><span class="__cf_email__" data-cfemail="b6dbd7c4dfd7d5dad7c3d2dfd798d1d9d8ccd7dad3ccf6d4deded9c2d3dad3c598d5d9db">[email&#160;protected]</span></a></td>
                   <td><a href="https://www.bhhoteles.com" target="_blank">bhhoteles.com</a></td>
                 </tr>
                 <tr>
@@ -880,7 +1008,7 @@
                   <td>Transversal 6 # 27-85</td>
                   <td>(+57) 304 555 0500</td>
                   <td>Nelly Castellanos</td>
-                  <td><a href="mailto:reservas.ibisbogotamuseo@accor.com">reservas.ibisbogotamuseo@accor.com</a></td>
+                  <td><a href="/cdn-cgi/l/email-protection#eb998e988e999d8a98c58289829889848c849f8a869e988e84ab8a88888499c5888486"><span class="__cf_email__" data-cfemail="f88a9d8b9d8a8e998bd6919a918b9a979f978c99958d8b9d97b8999b9b978ad69b9795">[email&#160;protected]</span></a></td>
                   <td><a href="https://www.ibishotel.com" target="_blank">ibishotel.com</a></td>
                 </tr>
               </tbody>
@@ -909,7 +1037,7 @@
                   <td>Calle 80 # 10-11</td>
                   <td>(+57) 601 744 7790</td>
                   <td>María Claudia Gonzalez</td>
-                  <td><a href="mailto:mariaclaudia.gonzalez@bhhoteles.com">mariaclaudia.gonzalez@bhhoteles.com</a></td>
+                  <td><a href="/cdn-cgi/l/email-protection#e78a86958e86848b8692838e86c98088899d868b829da7858f8f8893828b8294c984888a"><span class="__cf_email__" data-cfemail="5c313d2e353d3f303d2938353d723b3332263d3039261c3e343433283930392f723f3331">[email&#160;protected]</span></a></td>
                   <td><a href="https://www.bhhoteles.com" target="_blank">bhhoteles.com</a></td>
                 </tr>
                 <tr>
@@ -917,7 +1045,7 @@
                   <td>Cra. 5 # 74-52</td>
                   <td>(+57) 304 555 0500</td>
                   <td>María Claudia Gonzalez</td>
-                  <td><a href="mailto:mariaclaudia.gonzalez@bhhoteles.com">mariaclaudia.gonzalez@bhhoteles.com</a></td>
+                  <td><a href="/cdn-cgi/l/email-protection#f59894879c9496999480919c94db929a9b8f9499908fb5979d9d9a8190999086db969a98"><span class="__cf_email__" data-cfemail="6b060a19020a08070a1e0f020a450c0405110a070e112b090303041f0e070e1845080406">[email&#160;protected]</span></a></td>
                   <td><a href="https://www.bhhoteles.com" target="_blank">bhhoteles.com</a></td>
                 </tr>
                 <tr>
@@ -925,7 +1053,7 @@
                   <td>Calle 73 Nr 8-60</td>
                   <td>(+57) 321 385 2451</td>
                   <td>Gina Bermudez</td>
-                  <td><a href="mailto:gina.bermudez@r-hr.com">gina.bermudez@r-hr.com</a></td>
+                  <td><a href="/cdn-cgi/l/email-protection#2f4846414e014d4a5d425a4b4a556f5d02475d014c4042"><span class="__cf_email__" data-cfemail="5c3b35323d723e392e31293839261c2e71342e723f3331">[email&#160;protected]</span></a></td>
                   <td><a href="https://www.marriott.com" target="_blank">marriott.com</a></td>
                 </tr>
                 <tr>
@@ -933,7 +1061,7 @@
                   <td>Calle 61 # 5-39</td>
                   <td>(+57) 601 346 8246</td>
                   <td>Andrea Guerrero Camargo</td>
-                  <td><a href="mailto:andrea.guerrero@hotelesestelar.com">andrea.guerrero@hotelesestelar.com</a></td>
+                  <td><a href="/cdn-cgi/l/email-protection#56373832243337783123332424332439163e3922333a3325332522333a37247835393b"><span class="__cf_email__" data-cfemail="7d1c13190f181c531a08180f0f180f123d1512091811180e180e0918111c0f531e1210">[email&#160;protected]</span></a></td>
                   <td><a href="https://www.hotelesestelar.com/en" target="_blank">hotelesestelar.com</a></td>
                 </tr>
               </tbody>
@@ -962,7 +1090,7 @@
                   <td>Calle 90 No 11-13</td>
                   <td>(+57) 601 744 7790</td>
                   <td>María Claudia Gonzalez</td>
-                  <td><a href="mailto:mariaclaudia.gonzalez@bhhoteles.com">mariaclaudia.gonzalez@bhhoteles.com</a></td>
+                  <td><a href="/cdn-cgi/l/email-protection#a0cdc1d2c9c1c3ccc1d5c4c9c18ec7cfcedac1ccc5dae0c2c8c8cfd4c5ccc5d38ec3cfcd"><span class="__cf_email__" data-cfemail="2d404c5f444c4e414c5849444c034a4243574c4148576d4f454542594841485e034e4240">[email&#160;protected]</span></a></td>
                   <td><a href="https://www.bhhoteles.com" target="_blank">bhhoteles.com</a></td>
                 </tr>
                 <tr>
@@ -970,7 +1098,7 @@
                   <td>Cl. 113 No 7-65</td>
                   <td>(+57) 321 996 6849</td>
                   <td>Sebastian Shaid Arevalo</td>
-                  <td><a href="mailto:s.sahid@nh-hotels.com">s.sahid@nh-hotels.com</a></td>
+                  <td><a href="/cdn-cgi/l/email-protection#06752875676e6f6246686e2b6e6972636a752865696b"><span class="__cf_email__" data-cfemail="89faa7fae8e1e0edc9e7e1a4e1e6fdece5faa7eae6e4">[email&#160;protected]</span></a></td>
                   <td><a href="https://www.nh-hotels.com" target="_blank">nh-hotels.com</a></td>
                 </tr>
               </tbody>
@@ -983,54 +1111,98 @@
   </section>
 </div><!-- end page-bogota -->
 
-<!-- FOOTER -->
+<!-- CAPTCHA MODAL -->
+<div id="captcha-modal" style="display:none; position:fixed; inset:0; z-index:999; background:rgba(26,24,16,0.55); display:none; align-items:center; justify-content:center;">
+  <div style="background:var(--card); border:1px solid var(--rule); padding:2.5rem 3rem; max-width:380px; width:90%; position:relative;">
+    <p style="font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--gold); margin-bottom:0.8rem;">Verification</p>
+    <p style="font-family:'Cormorant Garamond',serif; font-size:1.6rem; font-weight:300; margin-bottom:0.6rem; color:var(--ink);">Please confirm you are human</p>
+    <p id="captcha-question" style="font-family:'EB Garamond',serif; font-size:1.1rem; color:var(--muted); margin-bottom:1.2rem;"></p>
+    <input id="captcha-input" type="number" placeholder="Your answer" style="width:100%; background:var(--bg); border:1px solid var(--rule); padding:0.7rem 1rem; font-family:'EB Garamond',serif; font-size:1rem; color:var(--ink); outline:none; margin-bottom:0.5rem;" onkeydown="if(event.key==='Enter') checkCaptcha()"/>
+    <p id="captcha-error" style="font-family:'DM Mono',monospace; font-size:0.65rem; color:var(--accent); letter-spacing:0.08em; min-height:1.2em; margin-bottom:1rem;"></p>
+    <div style="display:flex; gap:1rem;">
+      <button onclick="checkCaptcha()" style="font-family:'DM Mono',monospace; font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--card); background:var(--accent); border:none; padding:0.85rem 2rem; cursor:pointer; transition:background 0.2s;" onmouseover="this.style.background='#6e2e20'" onmouseout="this.style.background='var(--accent)'">Confirm →</button>
+      <button onclick="closeCaptcha()" style="font-family:'DM Mono',monospace; font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); background:none; border:1px solid var(--rule); padding:0.85rem 1.5rem; cursor:pointer;">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  var captchaAnswer = null;
+
+  function openCaptcha() {
+    var a = Math.floor(Math.random() * 12) + 1;
+    var b = Math.floor(Math.random() * 12) + 1;
+    var ops = [
+      { q: a + ' + ' + b, ans: a + b },
+      { q: a + ' × ' + b, ans: a * b },
+      { q: (a + b) + ' − ' + b, ans: a }
+    ];
+    var chosen = ops[Math.floor(Math.random() * ops.length)];
+    captchaAnswer = chosen.ans;
+    document.getElementById('captcha-question').textContent = 'What is ' + chosen.q + '?';
+    document.getElementById('captcha-input').value = '';
+    document.getElementById('captcha-error').textContent = '';
+    var modal = document.getElementById('captcha-modal');
+    modal.style.display = 'flex';
+    setTimeout(function(){ document.getElementById('captcha-input').focus(); }, 50);
+  }
+
+  function closeCaptcha() {
+    document.getElementById('captcha-modal').style.display = 'none';
+  }
+
+  function checkCaptcha() {
+    var val = parseInt(document.getElementById('captcha-input').value, 10);
+    if (val === captchaAnswer) {
+      closeCaptcha();
+      showPage('registration');
+    } else {
+      document.getElementById('captcha-error').textContent = 'Incorrect — please try again.';
+      document.getElementById('captcha-input').value = '';
+      document.getElementById('captcha-input').focus();
+      // Regenerate question after wrong answer
+      setTimeout(openCaptcha, 800);
+    }
+  }
+
+  // Close modal if clicking the backdrop
+  document.getElementById('captcha-modal').addEventListener('click', function(e) {
+    if (e.target === this) closeCaptcha();
+  });
+</script>
+
+
 <footer>
   <div class="footer-name">LiBERA 2026 · The LiBERA Bogotá Midterm Meeting</div>
   <div class="footer-copy">© 2026 Organizing Committee</div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   function showPage(page) {
+    // Hide all tab pages
     document.querySelectorAll('.tab-page').forEach(el => el.style.display = 'none');
+    // Remove active state from nav links
     document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+
     if (page === 'home') {
-      document.getElementById('main-content').style.display = 'block';
-      window.scrollTo(0, 0);
+      document.getElementById('main-content').style.display = '';
     } else {
       document.getElementById('main-content').style.display = 'none';
-      const el = document.getElementById('page-' + page);
-      if (el) { el.style.display = 'block'; window.scrollTo(0, 0); }
-      document.querySelectorAll('.nav-links a').forEach(a => {
-        if (a.getAttribute('onclick') && a.getAttribute('onclick').includes(page)) {
-          a.classList.add('active');
-        }
-      });
+      var el = document.getElementById('page-' + page);
+      if (el) el.style.display = '';
     }
+
+    var navMap = { home: 0, schedule: 1, registration: 2, bogota: 3 };
+    var links = document.querySelectorAll('.nav-links a');
+    if (navMap[page] !== undefined && links[navMap[page]]) {
+      links[navMap[page]].classList.add('active');
+    }
+
+    window.scrollTo(0, 0);
   }
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    const msg = document.getElementById('form-msg');
-    msg.textContent = '✓ Thank you! Your registration has been received. We will be in touch shortly.';
-    msg.style.display = 'block';
-    e.target.reset();
-  }
-
-  // Fade-in on scroll
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.style.opacity = '1';
-        e.target.style.transform = 'translateY(0)';
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('section').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(16px)';
-    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(el);
-  });
+  // Show home on load
+  showPage('home');
 </script>
+</body>
+</html>
