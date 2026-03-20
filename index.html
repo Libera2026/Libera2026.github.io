@@ -778,50 +778,110 @@
     <p class="section-body">The detailed programme will be published closer to the event. Below is an indicative structure — please check back for updates.</p>
 
     <div class="schedule-day">
-      <div class="day-label">Day 1 — Opening &amp; Plenary (tentative)</div>
+      <div class="day-label">Day 1 — Opening (tentative)</div>
+
       <div class="schedule-row">
-        <div class="schedule-time">09:00 – 09:30</div>
+        <div class="schedule-time">8:50 – 9:00</div>
         <div class="schedule-event">
           <strong>Welcome &amp; Opening Remarks</strong>
           <span>Organizing Committee</span>
         </div>
       </div>
+
       <div class="schedule-row">
-        <div class="schedule-time">09:30 – 10:30</div>
+        <div class="schedule-time">9:00 – 9:40</div>
         <div class="schedule-event">
-          <strong>Keynote Lecture I</strong>
-          <span>Speaker TBA — Title TBA</span>
-          <div><span class="tag keynote">Keynote</span></div>
+          <strong>Minicourse</strong>
+          <div><span class="tag keynote">Minicourse</span></div>
         </div>
       </div>
+
       <div class="schedule-row">
-        <div class="schedule-time">10:30 – 11:00</div>
+        <div class="schedule-time">9:40 – 10:20</div>
+        <div class="schedule-event">
+          <strong>Minicourse</strong>
+          <div><span class="tag keynote">Minicourse</span></div>
+        </div>
+      </div>
+
+      <div class="schedule-row">
+        <div class="schedule-time">10:20 – 10:40</div>
         <div class="schedule-event">
           <strong>Coffee Break</strong>
           <div><span class="tag break">Break</span></div>
         </div>
       </div>
+
       <div class="schedule-row">
-        <div class="schedule-time">11:00 – 12:30</div>
+        <div class="schedule-time">10:40 – 11:20</div>
         <div class="schedule-event">
-          <strong>Contributed Talks — Session A</strong>
-          <span>Stochastic Dynamics</span>
+          <strong>Invited Talk</strong>
+          <span>Speaker TBA — Title TBA</span>
+          <div><span class="tag keynote">Invited Talk</span></div>
         </div>
       </div>
+
       <div class="schedule-row">
-        <div class="schedule-time">14:00 – 15:30</div>
+        <div class="schedule-time">11:20 – 12:00</div>
         <div class="schedule-event">
-          <strong>Contributed Talks — Session B</strong>
-          <span>Control Theory</span>
+          <strong>Invited Talk</strong>
+          <span>Speaker TBA — Title TBA</span>
+          <div><span class="tag keynote">Invited Talk</span></div>
         </div>
       </div>
+
       <div class="schedule-row">
-        <div class="schedule-time">16:00 – 17:30</div>
+        <div class="schedule-time">12:00 – 1:30</div>
         <div class="schedule-event">
-          <strong>LiBERA Network Meeting</strong>
-          <span>Closed session for network members</span>
+          <strong>Lunch</strong>
+          <div><span class="tag break">Break</span></div>
         </div>
       </div>
+
+      <div class="schedule-row">
+        <div class="schedule-time">1:30 – 2:10</div>
+        <div class="schedule-event">
+          <strong>Invited Talk</strong>
+          <span>Speaker TBA — Title TBA</span>
+          <div><span class="tag keynote">Invited Talk</span></div>
+        </div>
+      </div>
+
+      <div class="schedule-row">
+        <div class="schedule-time">2:10 – 2:50</div>
+        <div class="schedule-event">
+          <strong>Invited Talk</strong>
+          <span>Speaker TBA — Title TBA</span>
+          <div><span class="tag keynote">Invited Talk</span></div>
+        </div>
+      </div>
+
+      <div class="schedule-row">
+        <div class="schedule-time">2:50 – 3:10</div>
+        <div class="schedule-event">
+          <strong>Coffee Break</strong>
+          <div><span class="tag break">Break</span></div>
+        </div>
+      </div>
+
+      <div class="schedule-row">
+        <div class="schedule-time">3:10 – 3:50</div>
+        <div class="schedule-event">
+          <strong>Invited Talk</strong>
+          <span>Speaker TBA — Title TBA</span>
+          <div><span class="tag keynote">Invited Talk</span></div>
+        </div>
+      </div>
+
+      <div class="schedule-row">
+        <div class="schedule-time">3:50 – 4:30</div>
+        <div class="schedule-event">
+          <strong>Invited Talk</strong>
+          <span>Speaker TBA — Title TBA</span>
+          <div><span class="tag keynote">Invited Talk</span></div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -1164,8 +1224,8 @@
     var b = Math.floor(Math.random() * 12) + 1;
     var ops = [
       { q: a + ' + ' + b, ans: a + b },
-      { q: a + ' × ' + b, ans: a * b },
-      { q: (a + b) + ' − ' + b, ans: a }
+      { q: a + ' x ' + b, ans: a * b },
+      { q: (a + b) + ' - ' + b, ans: a }
     ];
     var chosen = ops[Math.floor(Math.random() * ops.length)];
     captchaAnswer = chosen.ans;
@@ -1190,12 +1250,10 @@
       document.getElementById('captcha-error').textContent = 'Incorrect — please try again.';
       document.getElementById('captcha-input').value = '';
       document.getElementById('captcha-input').focus();
-      // Regenerate question after wrong answer
       setTimeout(openCaptcha, 800);
     }
   }
 
-  // Close modal if clicking the backdrop
   document.getElementById('captcha-modal').addEventListener('click', function(e) {
     if (e.target === this) closeCaptcha();
   });
