@@ -538,6 +538,7 @@
     <li><a href="#" onclick="showPage('schedule'); return false;">Schedule</a></li>
     <li><a href="#" onclick="openCaptcha(); return false;">Register</a></li>
     <li><a href="#" onclick="showPage('present'); return false;">Present your work</a></li>
+    <li><a href="#" onclick="showPage('grants'); return false;">Travel Grants</a></li>
     <li><a href="#" onclick="showPage('bogota'); return false;">Venue</a></li>
   </ul>
 </nav>
@@ -986,8 +987,12 @@
     </div>
   </div>
 </section>
+</div><!-- end page-present -->
 
-<section style="border-top:1px solid var(--rule);">
+
+<div id="page-grants" class="tab-page" style="display:none;">
+  <button class="back-btn" onclick="showPage('home')">← Back to main</button>
+<section>
   <div class="section-inner">
     <p class="section-label">Student Support</p>
     <h2 class="section-title">Travel Grants</h2>
@@ -1013,7 +1018,8 @@
     </div>
   </div>
 </section>
-</div><!-- end page-present -->
+</section>
+</div><!-- end page-grants -->
 
 <!-- ABOUT BOGOTÁ PAGE -->
 <div id="page-bogota" class="tab-page" style="display:none;">
@@ -1222,7 +1228,7 @@
       if (el) el.style.display = '';
     }
 
-    var navMap = { home: 0, schedule: 1, registration: 2, present: 3, bogota: 4 };
+    var navMap = { home: 0, schedule: 1, registration: 2, present: 3, grants: 4, bogota: 5 };
     var links = document.querySelectorAll('.nav-links a');
     if (navMap[page] !== undefined && links[navMap[page]]) {
       links[navMap[page]].classList.add('active');
