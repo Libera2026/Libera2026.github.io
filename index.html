@@ -207,44 +207,159 @@
     .about-card p { font-size: 0.95rem; color: var(--muted); }
 
     /* ── SCHEDULE ── */
-    #schedule .schedule-day {
+    #schedule .schedule-wrap {
       margin-top: 2.5rem;
+      border: 1px solid var(--rule);
+      background: var(--card);
     }
-    .day-label {
+    table.schedule-table {
+      width: 100%;
+      table-layout: fixed;
+      border-collapse: collapse;
+    }
+    .schedule-table th,
+    .schedule-table td {
+      border: 1px solid var(--rule);
+      padding: 0.7rem 0.6rem;
+      vertical-align: top;
+      text-align: left;
+      overflow-wrap: break-word;
+      word-break: break-word;
+    }
+    .schedule-table thead th {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--card);
+      border-bottom: 2px solid var(--accent);
+    }
+    .schedule-table td.time-col {
       font-family: 'DM Mono', monospace;
       font-size: 0.68rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--gold);
-      border-bottom: 1px solid var(--rule);
-      padding-bottom: 0.5rem;
-      margin-bottom: 1.2rem;
-    }
-    .schedule-row {
-      display: grid;
-      grid-template-columns: 120px 1fr;
-      gap: 1.5rem;
-      padding: 0.9rem 0;
-      border-bottom: 1px solid var(--rule);
-      align-items: start;
-    }
-    .schedule-time {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.75rem;
       color: var(--muted);
-      padding-top: 0.15rem;
+      background: var(--card);
+      padding-left: 0.5rem;
+      padding-right: 0.4rem;
     }
-    .schedule-event strong {
-      display: block;
+    .schedule-table td.event {
       font-family: 'EB Garamond', serif;
       font-weight: 600;
-      font-size: 1rem;
+      font-size: 0.96rem;
       color: var(--ink);
     }
-    .schedule-event span {
-      font-size: 0.9rem;
+    .schedule-table td.event span.sub {
+      display: block;
+      font-family: 'DM Mono', monospace;
+      font-weight: 400;
+      font-size: 0.68rem;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+      text-transform: none;
+      margin-top: 0.2rem;
+    }
+    .schedule-table td.empty { background: var(--card); }
+    .schedule-table td.event a {
+      color: inherit;
+      text-decoration: underline;
+      text-decoration-style: dotted;
+      text-decoration-color: currentColor;
+      text-underline-offset: 2px;
+      transition: color 0.15s;
+    }
+    .schedule-table td.event a:hover { color: var(--accent); }
+
+    /* session-type tints */
+    .cell-minicourse { background: rgba(196,150,58,0.22); }
+    .cell-talk       { background: rgba(139,58,42,0.10); }
+    .cell-break      { background: rgba(91,116,140,0.20); white-space: nowrap; }
+    .cell-social     { background: rgba(91,116,140,0.20); }
+    .cell-parallel   { background: rgba(107,143,92,0.22); }
+    .cell-excursion  { background: rgba(150,110,160,0.22); text-align: center; vertical-align: middle; }
+
+    .schedule-legend {
+      display: flex; flex-wrap: wrap; gap: 1.2rem;
+      margin-top: 1.2rem;
+    }
+    .schedule-legend .legend-item {
+      display: flex; align-items: center; gap: 0.5rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
       color: var(--muted);
     }
+    .schedule-legend .swatch {
+      width: 14px; height: 14px;
+      border: 1px solid var(--rule);
+      display: inline-block;
+    }
+
+    /* ── ABSTRACTS ── */
+    .abstracts-wrap { margin-top: 1rem; }
+    .abstracts-group { margin-top: 1.5rem; margin-bottom: 2.5rem; }
+    .abstract-entry {
+      border-bottom: 1px solid var(--rule);
+      padding: 1rem 0;
+      scroll-margin-top: 70px;
+    }
+    .abstract-entry summary {
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: baseline;
+      column-gap: 0.6rem;
+      row-gap: 0.2rem;
+    }
+    .abstract-entry summary::-webkit-details-marker { display: none; }
+    .abstract-entry summary::before {
+      content: '+';
+      font-family: 'DM Mono', monospace;
+      color: var(--accent);
+      display: inline-block;
+      width: 0.8rem;
+      flex-shrink: 0;
+    }
+    .abstract-entry[open] summary::before { content: '–'; }
+    .abstract-name {
+      font-family: 'EB Garamond', serif;
+      font-weight: 600;
+      font-size: 1.05rem;
+      color: var(--ink);
+    }
+    .abstract-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--accent);
+    }
+    .abstract-body {
+      margin-top: 0.9rem;
+      margin-left: 1.4rem;
+      font-size: 0.95rem;
+      line-height: 1.65;
+      color: var(--ink);
+    }
+    .abstract-affil {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.8rem;
+    }
+    .abstract-body p { margin-bottom: 0.9rem; }
+    .abstract-body p:last-child { margin-bottom: 0; }
+    ul.abstract-refs {
+      margin: 0.9rem 0 0.9rem 1.2rem;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+    ul.abstract-refs li { margin-bottom: 0.4rem; }
+
     .tag {
       display: inline-block;
       font-family: 'DM Mono', monospace;
@@ -527,6 +642,17 @@
       .reg-box { padding: 2rem 1.5rem; }
     }
   </style>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['\\[', '\\]']],
+        macros: { mathscr: ['\\mathcal{#1}', 1] }
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
 </head>
 <body>
 
@@ -538,7 +664,6 @@
     <li><a href="#" onclick="showPage('schedule'); return false;">Schedule</a></li>
     <li><a href="#" onclick="openCaptcha(); return false;">Register</a></li>
     <li><a href="#" onclick="showPage('present'); return false;">Present your work</a></li>
-    <li><a href="#" onclick="showPage('grants'); return false;">Travel Grants</a></li>
     <li><a href="#" onclick="showPage('bogota'); return false;">Venue</a></li>
   </ul>
 </nav>
@@ -787,113 +912,519 @@
   <div class="section-inner">
     <p class="section-label">Programme</p>
     <h2 class="section-title">Workshop Schedule</h2>
-    <p class="section-body">The detailed programme will be published closer to the event. Below is an indicative structure — please check back for updates.</p>
+    <p class="section-body">The full programme for the week of July 27–31. All sessions take place in the main venue unless otherwise noted. Click on a speaker's name to jump to their talk's abstract below.</p>
 
-    <div class="schedule-day">
-      <div class="day-label">Day 1 — Opening (tentative)</div>
+    <div class="schedule-wrap">
+      <table class="schedule-table">
+        <thead>
+          <tr>
+            <th style="width:13%;">Time</th>
+            <th style="width:18%;">Monday 27</th>
+            <th style="width:17.25%;">Tuesday 28</th>
+            <th style="width:17.25%;">Wednesday 29</th>
+            <th style="width:17.25%;">Thursday 30</th>
+            <th style="width:17.25%;">Friday 31</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="time-col">8:50 – 9:00</td>
+            <td class="event">Opening</td>
+            <td class="empty"></td>
+            <td class="empty"></td>
+            <td class="empty"></td>
+            <td class="empty"></td>
+          </tr>
+          <tr>
+            <td class="time-col">9:00 – 9:40</td>
+            <td class="event cell-minicourse"><a href="#abs-goncalo-dos-reis">Dos Reis</a></td>
+            <td class="event cell-minicourse"><a href="#abs-michael-hoegele">Hoegele</a></td>
+            <td class="event cell-minicourse"><a href="#abs-goncalo-dos-reis">Dos Reis</a></td>
+            <td class="event cell-minicourse"><a href="#abs-michael-hoegele">Hoegele</a></td>
+            <td class="event cell-talk"><a href="#abs-andreas-sjmark">Sojmark</a></td>
+          </tr>
+          <tr>
+            <td class="time-col">9:40 – 10:20</td>
+            <td class="event cell-minicourse"><a href="#abs-goncalo-dos-reis">Dos Reis</a></td>
+            <td class="event cell-minicourse"><a href="#abs-michael-hoegele">Hoegele</a></td>
+            <td class="event cell-minicourse"><a href="#abs-goncalo-dos-reis">Dos Reis</a></td>
+            <td class="event cell-minicourse"><a href="#abs-michael-hoegele">Hoegele</a></td>
+            <td class="event cell-talk"><a href="#abs-paulo-ruffino">Rufino</a></td>
+          </tr>
+          <tr>
+            <td class="time-col">10:20 – 10:40</td>
+            <td class="event cell-break">Coffee Break</td>
+            <td class="event cell-break">Coffee Break</td>
+            <td class="event cell-break">Coffee Break</td>
+            <td class="event cell-break">Coffee Break</td>
+            <td class="event cell-break">Coffee Break</td>
+          </tr>
+          <tr>
+            <td class="time-col">10:40 – 11:20</td>
+            <td class="event cell-talk"><a href="#abs-lauri-viitasaari">Viitasaari</a></td>
+            <td class="event cell-talk"><a href="#abs-dylan-possamai">Pössamai</a></td>
+            <td class="event cell-talk"><a href="#abs-erika-hausenblas">Hausenblas</a></td>
+            <td class="event cell-talk"><a href="#abs-alexander-steinicke">Steinicke</a></td>
+            <td class="event cell-talk"><a href="#abs-gerardo-barrera">Barrera, G.</a></td>
+          </tr>
+          <tr>
+            <td class="time-col">11:20 – 12:00</td>
+            <td class="event cell-talk"><a href="#abs-liliana-k-esquivel-mora">Esquivel</a></td>
+            <td class="event cell-talk"><a href="#abs-ludovic-tangpi">Tangpi</a></td>
+            <td class="event cell-talk"><a href="#abs-soledad-torres">Torres</a></td>
+            <td class="event cell-talk"><a href="#abs-paulo-henrique-da-costa">da Costa</a></td>
+            <td class="event cell-talk"><a href="#abs-goncalo-dos-reis-2">Dos Reis</a></td>
+          </tr>
+          <tr>
+            <td class="time-col">12:00 – 1:30</td>
+            <td class="event cell-social">Lunch</td>
+            <td class="event cell-social">Lunch (Photo)</td>
+            <td class="event cell-social">Lunch</td>
+            <td class="event cell-social">Lunch</td>
+            <td class="event cell-social">Lunch</td>
+          </tr>
+          <tr>
+            <td class="time-col">1:30 – 2:10</td>
+            <td class="event cell-talk"><a href="#abs-natalia-cardona-tobon">Cardona-Tobon</a></td>
+            <td class="event cell-talk"><a href="#abs-camilo-garcia-trillos">García Trillos</a></td>
+            <td class="empty" rowspan="3"></td>
+            <td class="event cell-talk"><a href="#abs-fabrice-djete">Djete</a></td>
+            <td class="event cell-talk"><a href="#abs-alejandra-quintos">Quintos</a></td>
+          </tr>
+          <tr>
+            <td class="time-col">2:10 – 2:50</td>
+            <td class="event cell-talk"><a href="#abs-emma-hubert">Hubert</a></td>
+            <td class="event cell-talk"><a href="#abs-juan-david-barrera">Barrera, J.D.</a></td>
+            <td class="event cell-talk"><a href="#abs-wincy-guerra">Guerra</a></td>
+            <td class="event cell-talk"><a href="#abs-rafael-serrano">Serrano</a></td>
+          </tr>
+          <tr>
+            <td class="time-col">2:50 – 3:10</td>
+            <td class="event cell-break">Coffee Break</td>
+            <td class="event cell-break">Coffee Break</td>
+            <td class="event cell-break">Coffee Break</td>
+            <td class="event cell-break">Coffee Break</td>
+          </tr>
+          <tr>
+            <td class="time-col">3:10 – 3:50</td>
+            <td class="event cell-parallel"><a href="#abs-julian-gutierrez-pineda">Gutierrez</a><br><a href="#abs-ronald-cardenas">Cárdenas</a></td>
+            <td class="event cell-parallel"><a href="#abs-alexandros-pavlis">Pavlis</a><br><a href="#abs-hugo-ramirez">Ramirez, H.</a></td>
+            <td class="event cell-excursion" rowspan="3">Free Excursion</td>
+            <td class="event cell-parallel"><a href="#abs-matias-vera">Vera</a><br><a href="#abs-jorge-ramirez">Ramirez, J.</a></td>
+            <td class="event cell-parallel"><a href="#abs-milla-laurikkala">Laurikkala</a><br><a href="#abs-filippo-beretta">Beretta</a></td>
+          </tr>
+          <tr>
+            <td class="time-col">3:50 – 4:30</td>
+            <td class="event cell-talk"><a href="#abs-nicolas-hernandez-santibanez">Hernández-Santibañez</a></td>
+            <td class="event cell-talk"><a href="#abs-joshue-heli-ricalde-guerrero">Ricalde</a></td>
+            <td class="event cell-talk"><a href="#abs-manuel-arnese">Arnese</a></td>
+            <td class="event cell-parallel"><a href="#abs-joao-pedro-shimizu-rodrigues">Shimizu</a></td>
+          </tr>
+          <tr>
+            <td class="time-col">5:00 – 6:30</td>
+            <td class="event cell-social">Coctel</td>
+            <td class="empty"></td>
+            <td class="empty"></td>
+            <td class="empty"></td>
+          </tr>
+          <tr>
+            <td class="time-col">7:00 –</td>
+            <td class="empty"></td>
+            <td class="empty"></td>
+            <td class="empty"></td>
+            <td class="event cell-social">Dinner</td>
+            <td class="empty"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
-      <div class="schedule-row">
-        <div class="schedule-time">8:50 – 9:00</div>
-        <div class="schedule-event">
-          <strong>Welcome &amp; Opening Remarks</strong>
-          <span>Organizing Committee</span>
+    <div class="schedule-legend">
+      <div class="legend-item"><span class="swatch cell-minicourse"></span>Minicourse</div>
+      <div class="legend-item"><span class="swatch cell-talk"></span>Invited Speaker</div>
+      <div class="legend-item"><span class="swatch cell-break"></span>Break / Meal</div>
+      <div class="legend-item"><span class="swatch cell-parallel"></span>Contributed Sessions</div>
+      <div class="legend-item"><span class="swatch cell-excursion"></span>Free Excursion</div>
+    </div>
+
+    <div class="abstracts-wrap">
+      <p class="section-label" style="margin-top:3rem;">Abstracts</p>
+      <h2 class="section-title" style="font-size:1.8rem;">Minicourses &amp; Talks</h2>
+      <p class="section-body">Click a name to read the abstract for each minicourse and talk.</p>
+
+      <div class="abstracts-group">
+        <div class="day-label">Minicourses</div>
+      <details class="abstract-entry" id="abs-goncalo-dos-reis">
+        <summary>
+          <span class="abstract-name">Gonçalo Dos Reis</span>
+          <span class="abstract-title">An introduction to SDEs of McKean-Vlasov type and respective interacting particle systems</span>
+        </summary>
+        <div class="abstract-body">
+          <p class="abstract-affil">School of Mathematics. University of Edinburgh, UK</p>
+<p>Stochastic differential equations (SDE) of McKean-Vlasov type or mean-field type are SDE where the solution's law appears inside the equation's coefficients making them more complicated to solve. On the other hand, such equations have been prominently applied in finance, agent dynamics and machine learning. In this mini course, we offer an introduction to this framework, covering well-posedness of McKean-Vlasov SDE and properties alongside the associated approximating interacting SDE particle systems and corresponding propagation of chaos.</p>
         </div>
+      </details>
+      <details class="abstract-entry" id="abs-michael-hoegele">
+        <summary>
+          <span class="abstract-name">Michael Hoegele</span>
+          <span class="abstract-title">Almost sure bounds via a new quantitative Borel-Cantelli lemma</span>
+        </summary>
+        <div class="abstract-body">
+          <p class="abstract-affil">Mathematics Department. Uniandes, Colombia</p>
+<p>One of the most important roles of the first Borel-Cantelli lemma is to translate convergence in probability (in case of summable error probabilities) into almost sure convergence. Such statements are essentially qualitative in nature, since they do not translate faster convergence rates of the error probabilities into higher-order moment bounds of the overlap statistics or the (random) modulus of convergence, but only into larger or smaller bounds on the expected overlap.</p>
+<p>In this minicourse, we motivate, prove, and apply an elementary, yet useful, quantitative extension of the first Borel–Cantelli lemma, termed the trade-off lemma, since it allows one to almost optimally 'trade' a.s. rates against moments of the (random) modulus of convergence. The showcase examples are laws of large numbers and associated strong consistency of estimators, rates of convergence of Pólya urns, extreme value statistics and quantile convergence, as well as properties of high-dimensional distributions, and finally–if time permits–some asymptotics of high-dimensional Erdös-Rényi graphs.</p>
+<p>This is joint work with Luisa F. Estrada (U Warwick, UK) and Alexander Steinicke (MU Leoben, Austria). More applications of those results to Brownian path property approximations will be presented in the talk by Alexander Steinicke.</p>
+        </div>
+      </details>
       </div>
 
-      <div class="schedule-row">
-        <div class="schedule-time">9:00 – 9:40</div>
-        <div class="schedule-event">
-          <strong>Minicourse</strong>
-          <div><span class="tag keynote">Minicourse</span></div>
+      <div class="abstracts-group">
+        <div class="day-label">Talks</div>
+      <details class="abstract-entry" id="abs-manuel-arnese">
+        <summary>
+          <span class="abstract-name">Manuel Arnese</span>
+          <span class="abstract-title">Quantitative propagation of chaos and universality for asymmetric Langevin spin glass dynamics</span>
+        </summary>
+        <div class="abstract-body">
+          <p class="abstract-affil">IEOR Department. Columbia University, USA</p>
+<p>We obtain quantitative estimates on quenched propagation of chaos for Langevin spin glass dynamics with i.i.d. disorder. Prior work in the case of Gaussian disorder established the qualitative convergence of the law of a single spin to a deterministic McKean–Vlasov limit. We prove convergence rates in expected Wasserstein distance and quantitative concentration rates for Lipschitz observables under the assumption that the disorder satisfies the $T_2$ inequality. The proof uses a coupling argument, together with techniques from concentration of measure, filtering theory, and Malliavin calculus.</p>
         </div>
-      </div>
-
-      <div class="schedule-row">
-        <div class="schedule-time">9:40 – 10:20</div>
-        <div class="schedule-event">
-          <strong>Minicourse</strong>
-          <div><span class="tag keynote">Minicourse</span></div>
+      </details>
+      <details class="abstract-entry" id="abs-gerardo-barrera">
+        <summary>
+          <span class="abstract-name">Gerardo Barrera</span>
+          <span class="abstract-title">$\chi^2$-cut-off phenomenon for Galerkin projections of Fokker-Planck equations with monomial potentials</span>
+        </summary>
+        <div class="abstract-body">
+          <p class="abstract-affil">Departamento de Matemática. IST Lisbon, Portugal</p>
+<p>We establish the existence of the cut-off phenomenon for Langevin-Kolmogorov random dynamics with monomial convex potentials, possibly singular, driven by Brownian motion of small strength. We consider a truncated $\chi^2$-distance, based on Galerkin projections of the eigensystem, and show that not only refined knowledge of the eigenvalues is needed, but also refined asymptotics for the growth of the eigenfunctions of the Fokker-Planck equations associated with the Langevin-Kolmogorov dynamics. In addition, we establish asymptotics of the mixing times. Based on joint work with Benny Avelin (Uppsala University, Sweden).</p>
         </div>
-      </div>
-
-      <div class="schedule-row">
-        <div class="schedule-time">10:20 – 10:40</div>
-        <div class="schedule-event">
-          <strong>Coffee Break</strong>
-          <div><span class="tag break">Break</span></div>
+      </details>
+      <details class="abstract-entry" id="abs-juan-david-barrera">
+        <summary>
+          <span class="abstract-name">Juan David Barrera</span>
+          <span class="abstract-title">Deviation bounds for dependent data via "chordal" partitions.</span>
+        </summary>
+        <div class="abstract-body">
+          <p class="abstract-affil">Mathematics Department. Uniandes, Colombia</p>
+<p>Deviation inequalities (and similar estimations) for dependent data on a finite sample regime are a topic of current interest due to the wide range of contemporary applications based (e.g.) on real data and Markovian methods, and to the demand for exact (as opposed to asymptotic) confidence intervals for the corresponding statistical errors.</p>
+<p>Among other techniques, "block" partitions (e.g. "Bernstein's method") have been used to address this problem departing from the independent case. In some instances, nonetheless, these produce bounds whose implied rate are suboptimal.</p>
+<p>In this talk, we will explain a simple idea based on an extension of Berbee's Lemma which allows to produce confidence intervals for functionals of the underlying data that are quasi-convex (in a sense to be explained) on their index set: a setting that includes deviations of the empirical process, and we will show that when applied to a relatively unexplored set of partitions (which we call "chordal" partitions), these give rise to estimations that are sharper and specialize correctly to dependent data when its $\beta$-mixing coefficients are in the "subharmonic" regime.</p>
         </div>
-      </div>
-
-      <div class="schedule-row">
-        <div class="schedule-time">10:40 – 11:20</div>
-        <div class="schedule-event">
-          <strong>Invited Talk</strong>
-          <span>Speaker TBA — Title TBA</span>
-          <div><span class="tag keynote">Invited Talk</span></div>
+      </details>
+      <details class="abstract-entry" id="abs-filippo-beretta">
+        <summary>
+          <span class="abstract-name">Filippo Beretta</span>
+          <span class="abstract-title">Leader—follower games with common and private information.</span>
+        </summary>
+        <div class="abstract-body">
+          <p class="abstract-affil">Mathematics Department. ETH, Switzerland</p>
+<p>We study a linear-quadratic Stackelberg stochastic differential game between a more informed leader and a follower. Similar models are attracting increasing attention in Finance, with a wide range of recent applications ranging from price impact to climate finance. Despite this momentum, the mathematical tools to tackle these problems are still limited and lack a unified framework. It is well known that even in full-information settings, different notions of admissible strategies may generate different Stackelberg equilibria. In contrast with most of the existing partial-information literature, we focus on closed-loop equilibria, which are more natural for applications and better suited for filtering techniques. By restricting the leader to linear strategies, we establish the existence of an equilibrium. Moreover, we characterize the equilibrium through a system of forward–backward ordinary differential equations, obtained via the deterministic maximum principle.</p>
         </div>
-      </div>
-
-      <div class="schedule-row">
-        <div class="schedule-time">11:20 – 12:00</div>
-        <div class="schedule-event">
-          <strong>Invited Talk</strong>
-          <span>Speaker TBA — Title TBA</span>
-          <div><span class="tag keynote">Invited Talk</span></div>
+      </details>
+      <details class="abstract-entry" id="abs-ronald-cardenas">
+        <summary>
+          <span class="abstract-name">Ronald Cárdenas</span>
+          <span class="abstract-title">Zero-Sum Games with Random Priority Rules.</span>
+        </summary>
+        <div class="abstract-body">
+          <p class="abstract-affil">Department of Probability and Statistics. CIMAT, Mexico</p>
+<p>This work addresses zero-sum stochastic differential games by introducing a random priority rule ($\lambda$) to manage the informational advantage between players. We propose a discrete-time approximation modeled via a forward-backward stochastic differential equation (FBSDE) system. By constructing a specialized semigroup, we establish a discrete-time Dynamic Programming Principle (DPP). Finally, we prove that the game's value function is uniquely characterized as the viscosity solution of a Hamilton-Jacobi-Isaacs (HJI) equation governed by an intermediate Hamiltonian $H^\lambda$.</p>
         </div>
-      </div>
-
-      <div class="schedule-row">
-        <div class="schedule-time">12:00 – 1:30</div>
-        <div class="schedule-event">
-          <strong>Lunch</strong>
-          <div><span class="tag break">Break</span></div>
+      </details>
+      <details class="abstract-entry" id="abs-natalia-cardona-tobon">
+        <summary>
+          <span class="abstract-name">Natalia Cardona-Tobon</span>
+          <span class="abstract-title">A random game in a graph.</span>
+        </summary>
+        <div class="abstract-body">
+          <p class="abstract-affil">Mathematics Department. UNAL, Colombia</p>
+<p>We study a variant of a classical two-player game where Alice and Bob alternately make n moves, each choosing between two options. In the standard version, the outcome depends on both players’ exact sequences of moves, and a sharp threshold $p_c$ separates the regimes where each player has, with high probability, a winning strategy. In our modification, the outcome still depends on Alice’s sequence, but for Bob only the number of times he plays move 1 matters. We show that this version also exhibits a sharp threshold $p'_c$ determining which player with large probability has a winning strategy when n tends to infinity. Joint work with Anja Sturm (University of Göttingen) and Jan M. Swart (The Czech Academy of Sciences).</p>
         </div>
-      </div>
-
-      <div class="schedule-row">
-        <div class="schedule-time">1:30 – 2:10</div>
-        <div class="schedule-event">
-          <strong>Invited Talk</strong>
-          <span>Speaker TBA — Title TBA</span>
-          <div><span class="tag keynote">Invited Talk</span></div>
+      </details>
+      <details class="abstract-entry" id="abs-fabrice-djete">
+        <summary>
+          <span class="abstract-name">Fabrice Djete</span>
+          <span class="abstract-title">A McKean–Vlasov semigroup and its application to a <em>martingale representation problem</em>.</span>
+        </summary>
+        <div class="abstract-body">
+          <p class="abstract-affil">CMAP, École Polytechnique, France</p>
+<p>In this talk, I will present a probabilistic approach to a McKean–Vlasov semigroup in the presence of common noise. I will show that this semigroup satisfies a first-order backward representation formula along arbitrary conditional law flows under only first-order regularity assumptions, avoiding the use of time derivatives and second-order Lions derivatives. The proof relies on a finite-particle approximation together with a diagonal/off-diagonal decomposition of the associated tangent processes. As an application, I will explain how the driftless case leads to a martingale representation theorem on the Wasserstein space, where the unique solution is characterized by the McKean–Vlasov heat semigroup and its Lions derivative. The consequence of this martingale representation theorem will then be discussed.</p>
         </div>
-      </div>
-
-      <div class="schedule-row">
-        <div class="schedule-time">2:10 – 2:50</div>
-        <div class="schedule-event">
-          <strong>Invited Talk</strong>
-          <span>Speaker TBA — Title TBA</span>
-          <div><span class="tag keynote">Invited Talk</span></div>
+      </details>
+      <details class="abstract-entry" id="abs-liliana-k-esquivel-mora">
+        <summary>
+          <span class="abstract-name">Liliana K. Esquivel Mora</span>
+          <span class="abstract-title">Fractional Dispersive Equations with Stochastic Boundary Forcing.</span>
+        </summary>
+        <div class="abstract-body">
+          <p class="abstract-affil">Department of Mathematics. University of Puerto Rico at Mayaguez, Puerto Rico</p>
+<p>This talk concerns the analysis of fractional dispersive evolution equations on domains with boundary under stochastic boundary forcing. The main motivation is to understand how boundary noise propagates into the interior when the spatial dynamics are governed by nonlocal fractional operators. We focus on Dirichlet-type stochastic boundary data driven by fractional Brownian paths with Hurst parameter $H>1/2$, so that the stochastic integrals can be interpreted pathwise in the Young sense.</p>
+<p>A central difficulty is that the boundary forcing is not an interior source term; it must first be lifted through a boundary operator. Using Laplace transform methods, we construct modal boundary contributions associated with each boundary component and study their mapping properties in Sobolev-type spaces. The analysis combines resolvent estimates for the fractional symbol, weighted transform bounds, and Young integration estimates. In particular, we obtain moment estimates for the stochastic boundary operator in spaces of the form \[C^{p_1} ( [0, T ];W^{2s}),\] where the admissible exponents depend on the fractional order, the spatial regularity, and the Hurst parameter.</p>
+<p>The talk will present the structure of the boundary operator, the role of tangential convolutions in the stochastic boundary datum, and the main estimates needed to control the stochastic Dirichlet contribution. These results provide a framework for treating fractional dispersive equations with rough-in-time boundary noise and form a step toward well-posedness and asymptotic analysis for stochastic boundary value problems driven by fractional Brownian motion.</p>
         </div>
-      </div>
-
-      <div class="schedule-row">
-        <div class="schedule-time">2:50 – 3:10</div>
-        <div class="schedule-event">
-          <strong>Coffee Break</strong>
-          <div><span class="tag break">Break</span></div>
+      </details>
+      <details class="abstract-entry" id="abs-paulo-henrique-da-costa">
+        <summary>
+          <span class="abstract-name">Paulo Henrique da Costa</span>
+          <span class="abstract-title">Mean Deviation Frequency in the Ergodic Theory.</span>
+        </summary>
+        <div class="abstract-body">
+          <p class="abstract-affil">Departamento de Matemática. Universidade de Brasília, Brasil</p>
+<p>We study the mean deviation frequency (MDF) for Birkhoff averages. The set of results obtained are based on the quantitative Borel-Cantelli lemma of Estrada and Högele, which turns marginal deviation estimates into moment bounds for the number of exceptional times. In uniformly hyperbolic systems, the Ruelle operator supplies exponential large deviations through the large-deviation rate generated by pressure; the same probability engine gives exponential moments for the overlap statistic and for the last deviation time. In intermittent Manneville–Pomeau systems, the spectral gap breaks down and the large-deviation scale becomes polynomial. The direct route from ordinary marginal deviations gives moments $\mathbb{E}[O_{\varepsilon}^{r}]<\infty$ for $1<r<1/\alpha-2$, while maximal large deviations give the sharper last-time spectrum $\mathbb{E}[L_{\varepsilon}^{r}]<\infty$ for $0<r<1/\alpha-1$, improving the exponent by one full power. For observables nondegenerate at the neutral fixed point, a laminar trapping argument gives the matching lower bound and identifies $1/\alpha-1$ as the exact critical exponent for the last-deviation time. Finally, we recast the Eggleston–Besicovitch digit-frequency problem in thermodynamic terms: empirical measures of Bernoulli and Gibbs states determine the prescribed digit frequencies, and large-deviation rates govern the quantitative stabilization time on the resulting fractal level sets.</p>
         </div>
-      </div>
+      </details>
+      <details class="abstract-entry" id="abs-goncalo-dos-reis-2">
+        <summary>
+          <span class="abstract-name">Gonçalo Dos Reis</span>
+          <span class="abstract-title">Simulation of mean-field SDEs: some recent results.</span>
+        </summary>
+        <div class="abstract-body">
+          <p class="abstract-affil">School of Mathematics. University of Edinburgh, UK</p>
+<p>Abstract: We review two results in the simulation for SDE of McKean-Vlasov type (MV-SDE). The first block of results addresses simulation of MV-SDEs having super-linear growth in the spatial and the interaction component in the drift, and non-constant Lipschitz diffusion coefficient. The 2nd block is far more curious. It addresses the study the weak convergence behaviour of the Leimkuhler–Matthews method, a non-Markovian Euler-type scheme with the same computational cost as the Euler scheme, for the approximation of the stationary distribution of a one-dimensional McKean–Vlasov Stochastic Differential Equation (MV-SDE). The particular class under study is known as mean-field (overdamped) Langevin equations (MFL). We provide weak and strong error results for the scheme in both finite and infinite time. We work under a strong convexity assumption. Based on a careful analysis of the variation processes and the Kolmogorov backward equation for the particle system associated with the MV-SDE, we show that the method attains a higher-order approximation accuracy in the long-time limit (of weak order convergence rate 3/2) than the standard Euler method (of weak order 1). While we use an interacting particle system (IPS) to approximate the MV-SDE, we show the convergence rate is independent of the dimension of the IPS and this includes establishing uniform-in-time decay estimates for moments of the IPS, the Kolmogorov backward equation and their derivatives. The theoretical findings are supported by numerical tests. This presentation is based on the joint work:</p>
 
-      <div class="schedule-row">
-        <div class="schedule-time">3:10 – 3:50</div>
-        <div class="schedule-event">
-          <strong>Invited Talk</strong>
-          <span>Speaker TBA — Title TBA</span>
-          <div><span class="tag keynote">Invited Talk</span></div>
+<ul class="abstract-refs">
+<li>[1] Chen, X., Dos Reis, G., Stockinger, W. and Wilde, Z., 2025. Improved weak convergence for the long-time simulation of mean-field Langevin equations. Electronic Journal of Probability, 30, pp.1-81.</li>
+<li>[2] X. Chen, G. dos Reis, 2024. Euler simulation of interacting particle systems and McKean-Vlasov SDEs with fully superlinear growth drifts in space and interaction. IMA Journal of Numerical Analysis, 44(2), 751-796.</li>
+</ul>
+
         </div>
-      </div>
-
-      <div class="schedule-row">
-        <div class="schedule-time">3:50 – 4:30</div>
-        <div class="schedule-event">
-          <strong>Invited Talk</strong>
-          <span>Speaker TBA — Title TBA</span>
-          <div><span class="tag keynote">Invited Talk</span></div>
+      </details>
+      <details class="abstract-entry" id="abs-camilo-garcia-trillos">
+        <summary>
+          <span class="abstract-name">Camilo García Trillos</span>
+          <span class="abstract-title">two clocks, one system: a deep solver for BSVIEs and time-inconsistent control.</span>
+        </summary>
+        <div class="abstract-body">
+          <p class="abstract-affil">Department of Mathematics. University College London, UK</p>
+<p>Time inconsistency breaks the backward recursion of dynamic programming. A now-standard response is to seek equilibrium policies, whose value function is characterised by forward–backward stochastic Volterra integral equations (FBSVIEs). This Volterra structure is the mathematical fingerprint of inconsistency: the value carries two clocks — the evaluation date t and the running time s — and the field $Z_{t,s}$ depends on both, exactly what classical BSDE machinery cannot represent.</p>
+<p>While BSDEs enjoy a mature toolbox of deep solvers, not many existed for BSVIEs. In this talk I present a deep-learning method that fills this gap. It comes with an a posteriori error certificate and, in practice, efficiently recovers the two-index field $Z_{t,s}$, matches predicted convergence rates, and scales to several hundred dimensions. I close by returning to control, via an actor–critic scheme for approximate equilibria. Based on joint work with K. Andersson and A. Gnoatto.</p>
         </div>
-      </div>
+      </details>
+      <details class="abstract-entry" id="abs-wincy-guerra">
+        <summary>
+          <span class="abstract-name">Wincy Guerra</span>
+          <span class="abstract-title">Optimal allocation of resources via optimal transport,</span>
+        </summary>
+        <div class="abstract-body">
+          <p class="abstract-affil">Department of Basic Sciences. Universidad EIA, Colombia</p>
+<p>In this work, we propose a Stackelberg-like model for a resource allocation problem over an urban region. The model incorporates transportation costs, distribution costs, and utility functions. A social planner aims to minimize the total cost while maximizing the welfare of the population that receives the resource. The resulting formulation is a bilevel optimization problem—also known as a Stackelberg game in game theory. The existence of the best-response function is established by means of results from optimal transport theory.</p>
+        </div>
+      </details>
+      <details class="abstract-entry" id="abs-julian-gutierrez-pineda">
+        <summary>
+          <span class="abstract-name">Julián Gutiérrez Pineda</span>
+          <span class="abstract-title">Approximation of two-scale mean-field games with common noise.</span>
+        </summary>
+        <div class="abstract-body">
+          <p class="abstract-affil">Division of Engineering, New York University, Abu Dhabi</p>
+<p>We study mean-field games (MFGs) with common noise and time-scale separation, where strategic decisions evolve on a slow scale while environmental factors fluctuate rapidly. The framework is motivated by applications such as electricity markets, where long-term investment decisions interact with rapid variations in demand and renewable generation under shared market shocks. The representative agent faces an optimal stopping problem driven by coupled slow-fast stochastic dynamics, with the common noise carried by the fast component. To address the analytical complexity arising from common noise and multiscale interactions, we combine stochastic averaging techniques with linear programming formulations for MFGs. We first derive an effective averaged MFG by integrating out the fast ergodic dynamics. We then introduce randomized stopping equilibria for the averaged problem, which provide a compact strategy framework compatible with occupation measure methods. Using lifting arguments, we construct approximate equilibria for the original two-scale game from equilibria of the averaged system. Our main results establish the existence of effective MFG equilibria with randomized stopping and provide explicit constructions of two-scale $\varepsilon$\-MFG equilibria for both strict and randomized stopping formulations. Quantitative convergence rates are obtained in the scale-separation parameter $\delta$, with errors of order $\varepsilon = \delta^{1/6}$ or $\delta^{1/3}$ depending on the averaging regime. The analysis covers both general Poisson equation averaging settings and explicit Ornstein-Uhlenbeck fast dynamics. As an application, we formulate an MFG model for renewable electricity producers making market-entry decisions under stochastic demand and production fluctuations.</p>
+        </div>
+      </details>
+      <details class="abstract-entry" id="abs-erika-hausenblas">
+        <summary>
+          <span class="abstract-name">Erika Hausenblas</span>
+          <span class="abstract-title">Fractal Geometry Meets Control Theory: Designing Motion through Rough Paths.</span>
+        </summary>
+        <div class="abstract-body">
+          <p class="abstract-affil">Department of Applied Mathematics. Montanuniversität Leoben, Austria</p>
+<p>Many nonlinear control systems are constrained in the sense that not every direction of motion is directly available. A classic example is a unicycle or a car with trailers: such systems can move forward and turn, but they cannot move sideways instantaneously. Nevertheless, by combining admissible motions in a suitable way, one can often generate missing directions indirectly. Mathematically, these hidden directions are described by Lie brackets of the control vector fields and play a central role in geometric control theory.</p>
+<p>In this talk, I will give a gentle introduction to this idea and explain why irregular paths, in particular fractal paths, provide a natural way to generate such Lie-bracket motions. The main mathematical tool is rough path theory. Rough path theory extends the classical theory of differential equations to equations driven by highly irregular signals. Fractal Brownian motion with a small Hurst parameter can be treated by rough path theory; a Brownian path can be seen as a truly rough path.The key idea is that an irregular path should not only be described by its increments, but also by its iterated integrals, such as its signed area, also called Lévy area. These higher-order quantities encode precisely the information that determines how a nonlinear system reacts to an irregular input.</p>
+<p>After introducing the basic ideas of rough paths in an accessible way, we show how Koch-type fractal paths can be constructed with prescribed Hölder regularity and prescribed Lévy area. Such paths are continuous but highly irregular. When used as control signals, their iterated integrals generate effective motions in Lie-bracket directions. This gives a deterministic and pathwise alternative to classical oscillatory or impulsive control strategies. As model examples, we discuss a unicycle and a trailer system. These examples illustrate how fractal controls can create sideways motion or higher-order bracket effects, even though these directions are not directly actuated. The talk is based on joint work with Kistosil Fahim and Ben Goldys.</p>
+        </div>
+      </details>
+      <details class="abstract-entry" id="abs-nicolas-hernandez-santibanez">
+        <summary>
+          <span class="abstract-name">Nicolas Hernández-Santibañez</span>
+          <span class="abstract-title">Closed-loop Equilibria for Stackelberg Games: A Story About Stochastic Targets.</span>
+        </summary>
+        <div class="abstract-body">
+          <p class="abstract-affil">Department of Mathematics. UTFSM, Chile</p>
+<p>We develop a general method to reformulate continuous-time stochastic Stackelberg differential games with closed-loop strategies as a single-level optimisation problem with target constraints. Both leader and follower control the drift and volatility of a stochastic output process to maximise expected utilities. Focusing on closed-loop strategies based only on the output history, we characterise the Stackelberg equilibrium. By treating the follower’s continuation utility, described by a second-order backward stochastic differential equation, as a controlled state variable, the leader’s problem becomes a standard stochastic control problem with target constraints. Using dynamic programming, we derive the equilibrium via Hamilton–Jacobi–Bellman equations. Joint with Camilo Hernández, Emma Hubert, Dylan Possamaï.</p>
+        </div>
+      </details>
+      <details class="abstract-entry" id="abs-emma-hubert">
+        <summary>
+          <span class="abstract-name">Emma Hubert</span>
+          <span class="abstract-title">Revisiting contract theory with volatility control.</span>
+        </summary>
+        <div class="abstract-body">
+          <p class="abstract-affil">CEREMADE. Université Paris Dauphine, France</p>
+<p>In this talk, we revisit the resolution of continuous-time principal–agent problems with drift and volatility control, originally addressed by Cvitanić, Possamaï, and Touzi (2018) through dynamic programming and second-order backward stochastic differential equations(2BSDEs), and develop new results in this framework. We begin by introducing an alternative problem in which the principal is allowed to directly control the quadratic variation of the output process. On the one hand, the resolution of this contractible-volatility problem follows the classical methodology of Sannikov (2008), thus relying on standard (first-order) BSDEs only. On the other hand, we introduce a new form of contracts allowing the principal to achieve her contractible-volatility value, thereby ensuring both the optimality of this contract form and the equivalence between the original and the alternative problems. At the same time, this alternative approach reveals that the optimality of the contract form introduced by Cvitanić, Possamaï, and Touzi (2018) implicitly relies on an additional duality assumption, which was not identified before. This observation motivates the construction of new families of contracts that remain optimal even when the duality assumption fails. Altogether, this line of work both simplifies and strengthens the existing theory of continuous-time principal–agent problems with volatility control and opens new directions for further extensions and applications in economics and finance. Talk based on joint works with Alessandro Chiusolo, Dylan Possamaï, and Nizar Touzi.</p>
+        </div>
+      </details>
+      <details class="abstract-entry" id="abs-milla-laurikkala">
+        <summary>
+          <span class="abstract-name">Milla Laurikkala</span>
+          <span class="abstract-title">Modeling of multiple interest rates with generalized Vasicek-type models.</span>
+        </summary>
+        <div class="abstract-body">
+          <p class="abstract-affil">Department of Information and Service Management. U Aalto, Finland</p>
+<p>The Vasicek model is a commonly used interest rate model, and there exist many extensions and generalizations of it. However, most generalizations of the model are either univariate or assume the noise process to be Gaussian, or both. In this article, we study a generalized multivariate Vasicek model that allows simultaneous modeling of multiple interest rates while making minimal assumptions. In the model, we only assume that the noise process has stationary increments with a suitably decaying autocovariance structure. We provide estimators for the unknown parameters and prove their consistencies. A continuous-time algebraic Riccati equation based approach is used in estimation. We also derive limiting distributions for each estimator and provide theoretical examples. Furthermore, the model is tested empirically with both simulated data and real data.</p>
+        </div>
+      </details>
+      <details class="abstract-entry" id="abs-alexandros-pavlis">
+        <summary>
+          <span class="abstract-name">Alexandros Pavlis</span>
+          <span class="abstract-title">A Dynamic Competitive Equilibrium Model of Irreversible Capacity Investment with Stochastic Demand and Heterogeneous Producers.</span>
+        </summary>
+        <div class="abstract-body">
+          <p class="abstract-affil">Department of Statistics. LSE, UK</p>
+<p>We formulate a continuous-time competitive equilibrium model of irreversible capacity investment in which a continuum of heterogeneous producers supplies a single nondurable good subject to exogenous stochastic demand. Each producer optimally adjusts both output and capacity over time in response to endogenous price signals, while investment decisions are irreversible. Market clearing holds continuously, with prices evolving endogenously to balance aggregate supply and demand through a constant-elasticity demand function driven by a stochastic base component. The model admits a mean-field interpretation, as each producer’s decisions both influence and are influenced by the aggregate behaviour of all others. We show that the equilibrium price process can be expressed as a nonlinear functional of the exogenous base demand, leading to a three-dimensional singular stochastic control problem for each producer. We derive an explicit solution to the associated Hamilton–Jacobi–Bellman equation, including a closed-form characterisation of the free-boundary surface separating investment and waiting regions.</p>
+        </div>
+      </details>
+      <details class="abstract-entry" id="abs-dylan-possamai">
+        <summary>
+          <span class="abstract-name">Dylan Pössamaï</span>
+          <span class="abstract-title">A policy iteration algorithm for non-Markovian control problems.</span>
+        </summary>
+        <div class="abstract-body">
+          <p class="abstract-affil">Mathematics Department. ETH, Switzerland</p>
+<p>In this talk, based on joint work with Ludovic Tangpi, I will present a new policy iteration algorithm for continuous-time stochastic control problems beyond the Markovian setting. The method constructs successive approximations through auxiliary linear–quadratic control problems, leading to a probabilistic scheme expressed in terms of backward stochastic differential equations. In contrast with entropy-regularised approaches based on relaxed controls, the algorithm approximates the original, non-penalised control problem and targets strict optimal controls when they exist. It is also complementary to classical policy iteration methods for non-entropy-regularised problems: the additional vanishing quadratic penalisation allows one to handle settings where the original Hamiltonian need not be globally Lipschitz in the gradient variable, and may instead have quadratic growth. This naturally leads to bounded-reward assumptions, which are well adapted to the theory of quadratic BSDEs. The main results establish exponential convergence rates for the value and, under suitable conditions, for the associated controls, using purely probabilistic estimates rather than PDE gradient bounds. I will also discuss how the same ideas extend to controlled volatility problems, yielding convergence results in multidimensional settings where the associated HJB equations are fully nonlinear.</p>
+        </div>
+      </details>
+      <details class="abstract-entry" id="abs-alejandra-quintos">
+        <summary>
+          <span class="abstract-name">Alejandra Quintos</span>
+          <span class="abstract-title">Dependent Random Times via Multivariate Generalized Cox Processes.</span>
+        </summary>
+        <div class="abstract-body">
+          <p class="abstract-affil">Department of Statistics. University of Wisconsin-Madison, USA</p>
+<p>The classical Cox construction provides a tractable way to model random times through increasing intensity processes, but in its standard form it is less well suited for dependence structures involving common shocks and simultaneous events. In this talk, we present a multivariate extension of the generalized Cox framework that makes it possible to model dependent random times using correlated càdlàg increasing processes.</p>
+<p>The construction extends the usual absolutely continuous setting and accommodates both simultaneous and non-simultaneous events. A key ingredient is the multiplicative decomposition of the associated Azéma supermartingales. Under assumptions ensuring deterministic compensators, the model remains analytically tractable and yields explicit formulas for joint survival probabilities.</p>
+<p>The framework includes several natural examples, such as models driven by Lévy subordinators, compound Poisson processes, and shot-noise processes. Time permitting, we also briefly discuss extensions that incorporate continuous stochastic components, thereby broadening the scope of the framework.</p>
+        </div>
+      </details>
+      <details class="abstract-entry" id="abs-hugo-ramirez">
+        <summary>
+          <span class="abstract-name">Hugo Ramirez</span>
+          <span class="abstract-title">Benchmarking index funds with transaction costs.</span>
+        </summary>
+        <div class="abstract-body">
+          <p class="abstract-affil">Science Department, Tecnológico de Monterrey, Mexico</p>
+<p>This paper addresses the optimal dynamic trading problem for an asset manager seeking to benchmark a capital-intensive financial index using a constrained sub-portfolio and subject to quadratic transaction costs. We develop a continuous-time framework that integrates stochastic portfolio optimization with a factor-based market model. Unlike traditional full-replication strategies, we employ a dimensionality reduction technique to select a sparse set of assets that capture the systematic risk of the target index. We derive a closed-form solution to the resulting Hamilton-Jacobi-Bellman equation, providing optimal trading intensities that balance tracking error, risk-adjusted returns, and market impact costs. Out-of-sample empirical analysis using S&amp;P 500 data (2017–2020) demonstrates that this dynamic strategy yields superior risk-adjusted returns and significantly lower transaction costs compared to both the target index and standard Markowitz mean-variance strategies.</p>
+        </div>
+      </details>
+      <details class="abstract-entry" id="abs-jorge-ramirez">
+        <summary>
+          <span class="abstract-name">Jorge Ramirez</span>
+          <span class="abstract-title">Resilience for stochastic systems.</span>
+        </summary>
+        <div class="abstract-body">
+          <p class="abstract-affil">Mathematics Department, UNAL Medellín, Colombia</p>
+<p>We propose a framework for defining and quantifying resilience in stochastic dynamical systems. Starting from a population at stochastic equilibrium, we analyze the effects of detrimental environmental perturbations and subsequent system adaptations that may lead to a resilient response. Both perturbations and adaptations are modeled as parametric changes in the underlying dynamics. The proposed notion of resilience captures the system’s ability to adapt to perturbations while recovering functional performance. To quantify this, we track the evolution of the system along the sequence equilibrium - perturbation - adaptation through the expected value of an observable that encodes context-specific well-being. Using tools from linear response theory, we derive estimators of resilience expressed in terms of ensemble averages, which can be computed from simulated or experimental data. We illustrate the framework with ecological population models, where resilience is associated with the ability of species to adjust their behavior in response to environmental disturbances.</p>
+        </div>
+      </details>
+      <details class="abstract-entry" id="abs-joshue-heli-ricalde-guerrero">
+        <summary>
+          <span class="abstract-name">Joshué Helí Ricalde Guerrero</span>
+          <span class="abstract-title">A Non-Commutative Method for the Propagation of Chaos.</span>
+        </summary>
+        <div class="abstract-body">
+          <p class="abstract-affil">Mathematics Department. ETH, Switzerland</p>
+<p>On one hand, the theory of Mean-Field Games studies the behavior of large interacting particle systems in which individual influences weaken as the population grows. On the other, Operator-valued Free Probability investigates the asymptotic behavior of ensembles of random block-matrix models in the large-dimension limit. Both frameworks are motivated by physics—statistical mechanics for Mean-Field Games and quantum field theory for Operator-valued Free Probability—and both share a common goal: understanding emergent collective phenomena from complex microscopic interactions. In this talk, we propose a framework that combines these perspectives, using non-commutative operator-valued stochastic analysis to study particle systems with many participants. This is joint work with Prof. Dr. Dylan Possamaï.</p>
+        </div>
+      </details>
+      <details class="abstract-entry" id="abs-joao-pedro-shimizu-rodrigues">
+        <summary>
+          <span class="abstract-name">João Pedro Shimizu Rodrigues</span>
+          <span class="abstract-title">Solving rough differential equations with the theory of regularity structures.</span>
+        </summary>
+        <div class="abstract-body">
+          <p class="abstract-affil">Departamento de Matemática. UNICAMP, Brasil</p>
+<p>Through rough path many of classical results can be reformulated to have a pathwise point of view. This would later be the motivation for developing a more general theory known as regularity structures. In this talk, we discuss an article by Antoine Brault in which the fundamental results of rough path theory are recovered within the setting of regularity structures. Namely, the existence of rough path lifts, the construction of the rough integral, and the well-posedness of rough differential equations. More precisely, for each $\alpha$-Hölder path there is a continuous choice of $\mathbb{X}$ in which the pair forms an element of $\mathscr{C^\alpha}$. Furthermore one can guarantee the convergence of sums of the type $\sum_{[s,t] \in \pi} y_sX_{s,t} + y_s' \mathbb{X}_{s,t}$ taken with the mesh of $\pi$ going to zero. And lastly this integral gives rise to a notion of differential equation in which under mild hypotheses one can get existence and uniqueness.</p>
+        </div>
+      </details>
+      <details class="abstract-entry" id="abs-paulo-ruffino">
+        <summary>
+          <span class="abstract-name">Paulo Ruffino</span>
+          <span class="abstract-title">Jointly uniform attractor for nonautonomous RDS.</span>
+        </summary>
+        <div class="abstract-body">
+          <p class="abstract-affil">Departamento de Matemática. UNICAMP, Brasil</p>
+<p>We introduce a notion of minimal uniform attractor for nonautonomous random dynamical systems, which depends jointly on time and on a random parameter. Several examples are provided to illustrate the concept and to compare it with existing notions of uniform attractors in the literature.</p>
+<p>We further apply the abstract theory to nonautonomous random differential equations with a non-compact symbol space. In particular, we develop a method to compactify the symbol space, by adapting techniques from the theory of deterministic nonautonomous differential equations. We also establish the stability of the minimal jointly uniform attractor by exploiting the relationship between deterministic and random dynamics.</p>
+<p>Finally, we show that such structures arise naturally in stochastic differential equations whose noise terms carry additional time dependence, by establishing a topological conjugacy between the resulting stochastic flows and nonautonomous random dynamical systems.</p>
+        </div>
+      </details>
+      <details class="abstract-entry" id="abs-rafael-serrano">
+        <summary>
+          <span class="abstract-name">Rafael Serrano</span>
+          <span class="abstract-title">Competition and income risk: optimal consumption and investment under relative performance criteria.</span>
+        </summary>
+        <div class="abstract-body">
+          <p class="abstract-affil">Departamento de Economía. U del Rosario, Colombia</p>
+<p>We study stochastic differential games in which a finite number of agents with exponential (CARA) preferences evaluate performance relative to the population average while facing stochastic income risk. We obtain closed-form Nash equilibria for an infinite-horizon consumption–saving game with only a riskless asset and relative-consumption concerns, and for a finite-horizon investment game in which agents trade several risky assets and compete over relative terminal wealth. We pass to mean-field limits under idiosyncratic and common income noise and obtain approximate Nash equilibria. We conclude by outlining an extension to jump dynamics in income.</p>
+        </div>
+      </details>
+      <details class="abstract-entry" id="abs-andreas-sjmark">
+        <summary>
+          <span class="abstract-name">Andreas Søjmark</span>
+          <span class="abstract-title">Mean-field control in heterogenous systems.</span>
+        </summary>
+        <div class="abstract-body">
+          <p class="abstract-affil">Departament of Statistics. LSE, UK</p>
+<p>In this talk, I will discuss the problem of mean-field control in systems with heterogeneous mean-field interactions, focusing especially on forward-backward state dynamics. First, I will introduce a novel methodology for reducing the well-posedness questions to that of a single randomized mean-field SDE or FBSDE. Then, I will present a stochastic maximum principle and a verification theorem for the mean-field control problem. Finally, I will touch on some applications to asset price equilibria under social comparisons and new models of systemic risk with forward-backward elements.</p>
+        </div>
+      </details>
+      <details class="abstract-entry" id="abs-alexander-steinicke">
+        <summary>
+          <span class="abstract-name">Alexander Steinicke</span>
+          <span class="abstract-title">Quantifying Almost Sure Convergence with a Focus on Brownian Motion Paths.</span>
+        </summary>
+        <div class="abstract-body">
+          <p class="abstract-affil">Department of Applied Mathematics. Montanuniversität Leoben, Austria</p>
+<p>Building on the elementary, but useful, quantification of a.s. convergence via the first Borel-Cantelli lemma (see e.g. [1,2]), we analyze various a.s.-convergence phenomena in context with Brownian paths. For example: How fast does the Lévy-Ciesielski construction converge to a Brownian path? How fast are the differentiability properties of approximations lost? How high do we need to approximate such that the law of iterated logarithm can be used? How high until we approach the correct modulus of continuity?</p>
+<p>We measure this a.s.-convergence speed majorly by the smallness of $\mathbb{P}(\{\mathfrak{m}>N\})$, where $N$ is a given natural (index) number and $\mathfrak{m}$ is the last (random) index, where an approximating sequence $n\mapsto W^{n}$ to a Brownian motion $W$ violates one of the aforementioned properties to a certain extent (up to an $\varepsilon$). Further, we present quantitative versions of classical results in context with Brownian motion (and other processes) such as the Kolmogorov-Chentsov continuity theorem, the convergence to the correct quadratic variation and that, almost surely, a Brownian path is monotone at no point.</p>
 
+<ul class="abstract-refs">
+<li>[1] L.F. Estrada, M.A. Högele: Moment estimates in the first Borel-Cantelli Lemma with applications to mean deviation frequencies, Statistics and Probability Letters 190, 2022.</li>
+<li>[2] L.F. Estrada, M.A. Högele and A. Steinicke: On the tradeoff between almost sure error tolerance and its mean deviation frequency in martingale convergence, ALEA Lat. Am. J. Probab. Math. Stat. 23, 2026.</li>
+</ul>
+
+        </div>
+      </details>
+      <details class="abstract-entry" id="abs-ludovic-tangpi">
+        <summary>
+          <span class="abstract-name">Ludovic Tangpi</span>
+          <span class="abstract-title">On conditional McKean-Vlasov control problems.</span>
+        </summary>
+        <div class="abstract-body">
+          <p class="abstract-affil">ORFE, Princeton University, USA</p>
+<p>We study a new approach for McKean-Vlasov control in the probabilistic weak formulation. We characterize optimal controls by establishing a Pontryagin maximum principle. Our results relate the control problem to a generalized McKean-Vlasov backward stochastic differential equation rather than the usual forward-backward system obtained in the strong formulation. The new point of view is particularly relevant when regularity is lacking in the problem. We illustrate this by considering conditioned interaction. That is, when the particles interact conditionally on remaining in a given domain, similar to the problem introduced by Lions in his lectures at the Collège de France in November 2016. We further provide two applications. First, we present a version of the Schrödinger problem that allows for particles to leave a domain and show how to solve it using a penalization scheme. Second, we shed new light on the link between McKean-Vlasov control and potential mean field games. This work is based on joint work with René Carmona and Kaiwen Zhang.</p>
+        </div>
+      </details>
+      <details class="abstract-entry" id="abs-soledad-torres">
+        <summary>
+          <span class="abstract-name">Soledad Torres</span>
+          <span class="abstract-title">On numerical scheme for FSDE driven by fractional Brownian motion.</span>
+        </summary>
+        <div class="abstract-body">
+          <p class="abstract-affil">CIMFAV, Facultad de Ingeniería. Universidad de Valparaíso, Chile</p>
+<p>In this talk, we study a stochastic functional differential equation (SFDE) with memory driven by a fractional Brownian motion (fBm) with Hurst parameter $H>1/2$. An Euler-type numerical scheme is proposed and analyzed under suitable regularity conditions on the drift and diffusion coefficients, we prove the convergence of the scheme and derive the corresponding rate in terms of the discretization step. The main result will be proved using two different methodologies. The first proof is developed using tools from fractional calculus, whereas the second proof is based on the rough paths framework. Joint work with: Alexander Abreu, Héctor Araya, Johanna Garzón, Lisandro Fermín, Jorge León and Jorge Lozada.</p>
+        </div>
+      </details>
+      <details class="abstract-entry" id="abs-matias-vera">
+        <summary>
+          <span class="abstract-name">Matías Vera</span>
+          <span class="abstract-title">Investment and Operational Planning for electricity markets with massive entry of renewable energy.</span>
+        </summary>
+        <div class="abstract-body">
+          <p class="abstract-affil">Mathematics Department. ETH, Switzerland</p>
+<p>In wholesale electricity markets, a key role is played by the interaction of the electricity producers, deciding investment plans for the long-term future, and the Independent System Operator (ISO), which is responsible for minimizing production costs while satisfying supply-demand and capacity constraints. These two duties are carried out in different sizes of magnitude, as the ISO distributes energy on a more-than-once-a-day basis, while the producers invest in the decades scale. Aligning these two scales is a challenging task; however, a way to deal with this difficulty is by passing to a continuous-time setting, naturally including a long-term maturity period T and a very short-term infinitesimal unit of time dt. In this talk, we consider a particular type of market in which the interests of the producers and the ISO are the same. We present a continuous-time problem in which the ISO aims to minimize the joint cost of operation and investment in an electric network. The problem is formulated through operational and investment control variables; we discuss the hierarchy between them and use the so-called Day Ahead Problem to find an explicit form of the optimal operational variable, which allows us to reformulate the problem as a stochastic control problem with state-constraints. We extend the results of state-constrained stochastic control to fit our setting. In particular, we use a version of the Pointing Inward Condition to fully characterize the value of the problem as the unique viscosity solution of the associated Hamilton-Jacobi-Bellman (HJB) equation in the constrained sense. Once we have obtained the characterization result, we assign a specific dynamic to the capacity-demand process and discuss how the assumption for the HJB characterization results in a budget constraint for the planning. We run simulations for a three-node setting that resembles the Chilean market for several investment periods, and also discuss how to transition to a state with massive renewable energies. Finally, we address how to pass from a joint investment and operational planning to a bilevel formulation in which the interests of the producers and the ISO are not necessarily align, and furthermore, the producers may compete against each other to secure a larger share of the energy demand.</p>
+        </div>
+      </details>
+      <details class="abstract-entry" id="abs-lauri-viitasaari">
+        <summary>
+          <span class="abstract-name">Lauri Viitasaari</span>
+          <span class="abstract-title">Some statistical aspects related to SPDEs.</span>
+        </summary>
+        <div class="abstract-body">
+          <p class="abstract-affil">Department of Information and Service Management. U Aalto, Finland</p>
+<p>In this talk we discuss several statistical aspects related to SPDEs. In particular, we provide quantitative central limit theorem results for spatial averages of solutions under rather general conditions on both the differential operator and on the noise term. On top of that, we consider non-parametric estimation of the unknown diffusion coefficient. We define an estimator that is shown to be consistent. We also provide the rate of convergence in the $L^p$ norm.</p>
+        </div>
+      </details>
+      </div>
     </div>
   </div>
 </section>
@@ -953,7 +1484,7 @@
 <section style="border-top:1px solid var(--rule);">
   <div class="section-inner">
     <p class="section-label">Present your work</p>
-    <h2 class="section-title">Contributive Talks</h2>
+    <h2 class="section-title">Contributive Talks and Posters</h2>
     <p class="section-body">There will be limited spots available for contributive talks, alongside a dedicated poster session open to all participants.</p>
 
     <div class="venue-margin-layout" style="margin-top:2.5rem;">
@@ -963,7 +1494,10 @@
         <div class="venue-text">A limited number of slots are available for contributed talks. Submissions will be reviewed and selected by the organizing committee.</div>
       </div>
 
-     
+      <div class="venue-row">
+        <div class="venue-label">Posters</div>
+        <div class="venue-text">Students at any level — Undergraduate, Master's, or Doctoral — are encouraged to apply for the poster session. The poster session will be run as a contest, with prizes awarded to the top participants.</div>
+      </div>
 
       <div class="venue-row">
         <div class="venue-label">How to Submit</div>
@@ -976,25 +1510,21 @@
       <div class="venue-row">
         <div class="venue-label">Key Dates</div>
         <div class="venue-text">
-          <p style="margin-bottom:0.4rem;"><strong>Submission deadline:</strong> June 30th</p>
-          <p><strong>Decisions announced:</strong> by July 10th at the latest</p>
+          <p style="margin-bottom:0.4rem;"><strong>Submission deadline:</strong> June 1st</p>
+          <p><strong>Decisions announced:</strong> by June 15th at the latest</p>
         </div>
       </div>
 
     </div>
   </div>
 </section>
-</div><!-- end page-present -->
 
-
-<div id="page-grants" class="tab-page" style="display:none;">
-  <button class="back-btn" onclick="showPage('home')">← Back to main</button>
-<section>
+<section style="border-top:1px solid var(--rule);">
   <div class="section-inner">
     <p class="section-label">Student Support</p>
     <h2 class="section-title">Travel Grants</h2>
     <p class="section-body">A limited number of travel grants will be available to students who can demonstrate a strong interest in, relevance to, and academic support for participating in the workshop.</p>
-    <p class="section-body" style="margin-top:1.2rem;">Please note that submitting a contributed talk does <strong>not</strong> automatically enroll you for a travel grant — a separate application is required.</p>
+    <p class="section-body" style="margin-top:1.2rem;">Please note that submitting a contributed talk or poster does <strong>not</strong> automatically enroll you for a travel grant — a separate application is required.</p>
 
     <div class="venue-margin-layout" style="margin-top:2.5rem;">
 
@@ -1009,14 +1539,13 @@
 
       <div class="venue-row">
         <div class="venue-label">Deadline</div>
-        <div class="venue-text">Applications will be considered on a rolling basis. The deadline is <strong>June 30th</strong>. Early applications are strongly encouraged.</div>
+        <div class="venue-text">Applications will be considered on a rolling basis. The deadline is <strong>June 1st</strong>. Early applications are strongly encouraged.</div>
       </div>
 
     </div>
   </div>
 </section>
-</section>
-</div><!-- end page-grants -->
+</div><!-- end page-present -->
 
 <!-- ABOUT BOGOTÁ PAGE -->
 <div id="page-bogota" class="tab-page" style="display:none;">
@@ -1225,7 +1754,7 @@
       if (el) el.style.display = '';
     }
 
-    var navMap = { home: 0, schedule: 1, registration: 2, present: 3, grants: 4, bogota: 5 };
+    var navMap = { home: 0, schedule: 1, registration: 2, present: 3, bogota: 4 };
     var links = document.querySelectorAll('.nav-links a');
     if (navMap[page] !== undefined && links[navMap[page]]) {
       links[navMap[page]].classList.add('active');
