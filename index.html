@@ -277,6 +277,15 @@
     .cell-social     { background: rgba(91,116,140,0.20); }
     .cell-parallel   { background: rgba(107,143,92,0.22); }
     .cell-excursion  { background: rgba(150,110,160,0.22); text-align: center; vertical-align: middle; }
+    .cell-room {
+      background: var(--card);
+      font-family: 'DM Mono', monospace;
+      font-weight: 400;
+      font-size: 0.78rem;
+      letter-spacing: 0.02em;
+      text-align: center;
+      color: var(--muted);
+    }
 
     .schedule-legend {
       display: flex; flex-wrap: wrap; gap: 1.2rem;
@@ -912,9 +921,14 @@
   <div class="section-inner">
     <p class="section-label">Programme</p>
     <h2 class="section-title">Workshop Schedule</h2>
-    <p class="section-body">The full programme for the week of July 27–31. All sessions take place in the main venue unless otherwise noted.</p>
-      
-    <p class="section-body" style="margin-top:1.2rem;"> <strong>Click on a speaker's name to jump to their talk's abstract below.</strong></p>
+    <p class="section-body"><strong>We will have different rooms throughout the week</strong>, as reflected in the "Room" row below. All rooms are on the main campus. Provided you have completed the campus registration form, you may enter campus via any of the entrances and walk to the room using the Google map link provided.</p>
+
+    <ul class="section-body" style="margin-top:0.8rem; padding-left:1.3rem;">
+      <li style="margin-bottom:0.5rem;">For Rooms <a href="https://maps.app.goo.gl/wexEjfpwEY79sL9Q6" target="_blank" rel="noopener">B-401</a> and <a href="https://maps.app.goo.gl/PLJ4KHYxuSFKPqA3A" target="_blank" rel="noopener">RGD 206</a> we recommend using the university's main entrance (entrada edificio Franco), <a href="https://maps.app.goo.gl/jrcS4PU47kCX3EBR9" target="_blank" rel="noopener">map pin</a>.</li>
+      <li>For Room <a href="https://maps.app.goo.gl/TvUR79g9Rysv5NXs6" target="_blank" rel="noopener">W-401</a> we recommend using the entrance on "Calle 19A", <a href="https://maps.app.goo.gl/SC69pfwCZwvqmQvA8" target="_blank" rel="noopener">map pin</a>.</li>
+    </ul>
+
+    <p class="section-body" style="margin-top:1.2rem;"> <strong>Click on each activity or speaker's name to jump to the activity's details or talk's abstract below.</strong></p>
       
 
     <div class="schedule-wrap">
@@ -930,6 +944,14 @@
           </tr>
         </thead>
         <tbody>
+          <tr>
+            <td class="time-col">Room</td>
+            <td class="event cell-room"><a href="https://maps.app.goo.gl/wexEjfpwEY79sL9Q6" target="_blank" rel="noopener">B-401</a></td>
+            <td class="event cell-room"><a href="https://maps.app.goo.gl/wexEjfpwEY79sL9Q6" target="_blank" rel="noopener">B-401</a></td>
+            <td class="event cell-room"><a href="https://maps.app.goo.gl/PLJ4KHYxuSFKPqA3A" target="_blank" rel="noopener">RGD 206</a></td>
+            <td class="event cell-room"><a href="https://maps.app.goo.gl/wexEjfpwEY79sL9Q6" target="_blank" rel="noopener">B-401</a></td>
+            <td class="event cell-room"><a href="https://maps.app.goo.gl/TvUR79g9Rysv5NXs6" target="_blank" rel="noopener">W-401</a></td>
+          </tr>
           <tr>
             <td class="time-col">8:50 – 9:00</td>
             <td class="event">Opening</td>
@@ -1012,7 +1034,7 @@
             <td class="time-col">3:10 – 3:50</td>
             <td class="event cell-parallel"><a href="#abs-julian-gutierrez-pineda">Gutierrez</a><br><a href="#abs-ronald-cardenas">Cárdenas</a></td>
             <td class="event cell-parallel"><a href="#abs-alexandros-pavlis">Pavlis</a><br><a href="#abs-hugo-ramirez">Ramirez, H.</a></td>
-            <td class="event cell-excursion" rowspan="3">Free Excursion</td>
+            <td class="event cell-excursion" rowspan="3"><a href="#activity-excursion">Free Excursion</a></td>
             <td class="event cell-parallel"><a href="#abs-joao-pedro-shimizu-rodrigues">Shimizu</a><br><a href="#abs-jorge-ramirez">Ramirez, J.</a></td>
             <td class="event cell-parallel"><a href="#abs-milla-laurikkala">Laurikkala</a><br><a href="#abs-filippo-beretta">Beretta</a></td>
           </tr>
@@ -1025,7 +1047,7 @@
           </tr>
           <tr>
             <td class="time-col">5:00 – 6:30</td>
-            <td class="event cell-social">Coctel</td>
+            <td class="event cell-excursion"><a href="#activity-reception">Reception</a></td>
             <td class="empty"></td>
             <td class="empty"></td>
             <td class="empty"></td>
@@ -1035,7 +1057,7 @@
             <td class="empty"></td>
             <td class="empty"></td>
             <td class="empty"></td>
-            <td class="event cell-social">Dinner</td>
+            <td class="event cell-excursion"><a href="#activity-dinner">Dinner</a></td>
             <td class="empty"></td>
           </tr>
         </tbody>
@@ -1047,7 +1069,7 @@
       <div class="legend-item"><span class="swatch cell-talk"></span>Invited Speaker</div>
       <div class="legend-item"><span class="swatch cell-break"></span>Break / Meal</div>
       <div class="legend-item"><span class="swatch cell-parallel"></span>Contributed Sessions</div>
-      <div class="legend-item"><span class="swatch cell-excursion"></span>Free Excursion</div>
+      <div class="legend-item"><span class="swatch cell-excursion"></span>Social Event</div>
     </div>
 
     <div class="abstracts-wrap">
@@ -1427,6 +1449,45 @@
 <p>In this talk we discuss several statistical aspects related to SPDEs. In particular, we provide quantitative central limit theorem results for spatial averages of solutions under rather general conditions on both the differential operator and on the noise term. On top of that, we consider non-parametric estimation of the unknown diffusion coefficient. We define an estimator that is shown to be consistent. We also provide the rate of convergence in the $L^p$ norm.</p>
         </div>
       </details>
+      </div>
+    </div>
+
+    <div class="abstracts-wrap">
+      <p class="section-label" style="margin-top:3rem;">Activities</p>
+      <h2 class="section-title" style="font-size:1.8rem;">Social Programme</h2>
+      <p class="section-body">Details for the social events on the schedule. Click an entry to expand it.</p>
+
+      <div class="abstracts-group">
+        <details class="abstract-entry" id="activity-reception">
+          <summary>
+            <span class="abstract-name">Reception</span>
+            <span class="abstract-title">Monday 27 · 5:00 PM · SD Building, 7th floor</span>
+          </summary>
+          <div class="abstract-body">
+            <p>The welcome reception will take place on Monday at 5 PM on the 7th floor of the SD Building. We will walk together from the meeting room to the reception.</p>
+          </div>
+        </details>
+
+        <details class="abstract-entry" id="activity-excursion">
+          <summary>
+            <span class="abstract-name">Free Excursion</span>
+            <span class="abstract-title">Wednesday 29 · 3:00 PM · Monserrate</span>
+          </summary>
+          <div class="abstract-body">
+            <p>We will visit the top of the Monserrate mountain. We will meet at 3 PM on campus, at the university's main entrance (entrada edificio Franco), <a href="https://maps.app.goo.gl/3Y1EMxzgB3GCHZvD9" target="_blank" rel="noopener">map pin</a>. From there we will walk to the base of Monserrate, take the funicular railway to the top, and share "onces Santafereñas" in one of the restaurants. More information about Monserrate is available <a href="https://monserrate.co/en/" target="_blank" rel="noopener">here</a>.</p>
+          </div>
+        </details>
+
+        <details class="abstract-entry" id="activity-dinner">
+          <summary>
+            <span class="abstract-name">Conference Dinner</span>
+            <span class="abstract-title">Thursday 30 · 7:00 PM · Maria Tomasa Comida Caribeña</span>
+          </summary>
+          <div class="abstract-body">
+            <p>The conference dinner will take place on Thursday at 7 PM at Maria Tomasa Comida Caribeña. This restaurant features Colombian food from the Caribbean coast. The location is available <a href="https://maps.app.goo.gl/bGwgCQPsnR41Xh129" target="_blank" rel="noopener">here</a>.</p>
+            <p>You can: a) meet us at 6:45 PM at the university's main entrance (entrada edificio Franco), <a href="https://maps.app.goo.gl/3Y1EMxzgB3GCHZvD9" target="_blank" rel="noopener">map pin</a>; or b) alternatively, meet us directly at the restaurant at 7 PM. More information about the restaurant is available <a href="https://www.instagram.com/restaurantemariatomasa/?hl=en" target="_blank" rel="noopener">here</a>.</p>
+          </div>
+        </details>
       </div>
     </div>
   </div>
